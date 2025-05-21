@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decision Trees | Machine Learning Hub</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="topic-header">
+        <div class="container">
+            <a href="index.html" class="back-button"><i class="fas fa-arrow-left"></i> Back to Home</a>
+            <h1>Decision Trees</h1>
+            <p>Tree-like models of decisions and their consequences</p>
+        </div>
+    </header>
+
+    <section class="container">
+        <div class="topic-container">
+            <div class="topic-description">
+                <h2>What are Decision Trees?</h2>
+                <p>Decision Trees are a popular supervised learning method used for both classification and regression tasks. They work by splitting the data into subsets based on the value of input features, creating a tree-like model of decisions.</p>
+                
+                <p>The algorithm creates a flowchart-like structure where:</p>
+                <ul>
+                    <li>Each internal node represents a "test" on a feature (e.g., whether a coin flip comes up heads or tails)</li>
+                    <li>Each branch represents the outcome of the test</li>
+                    <li>Each leaf node represents a class label (decision taken after computing all attributes)</li>
+                </ul>
+                
+                <p>The paths from root to leaf represent classification rules. Decision trees are easy to understand and interpret, making them valuable tools for visualizing decisions.</p>
+                
+                <h3>Advantages of Decision Trees:</h3>
+                <ul>
+                    <li>Simple to understand and interpret</li>
+                    <li>Requires little data preparation</li>
+                    <li>Can handle both numerical and categorical data</li>
+                    <li>Can handle multi-output problems</li>
+                    <li>Uses a white box model (if a given situation is observable in the model, the explanation for the condition is easily explained)</li>
+                </ul>
+                
+                <h3>Common Decision Tree Algorithms:</h3>
+                <ul>
+                    <li>ID3 (Iterative Dichotomiser 3)</li>
+                    <li>C4.5 (successor of ID3)</li>
+                    <li>CART (Classification And Regression Tree)</li>
+                    <li>CHAID (Chi-square Automatic Interaction Detector)</li>
+                </ul>
+            </div>
+            
+            <div class="topic-video">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/_L39rN6gz7Y" title="Decision Trees Explained" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                
+                <div class="diagram-container">
+                    <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Decision Tree Visualization -->
+                        
+                        <!-- Root Node -->
+                        <circle cx="300" cy="50" r="35" fill="#6a11cb"/>
+                        <text x="300" y="55" text-anchor="middle" fill="white" font-size="14">Age > 30?</text>
+                        
+                        <!-- First Level - Left -->
+                        <circle cx="150" cy="150" r="35" fill="#2575fc"/>
+                        <text x="150" y="155" text-anchor="middle" fill="white" font-size="14">Income > 50K?</text>
+                        
+                        <!-- First Level - Right -->
+                        <circle cx="450" cy="150" r="35" fill="#2575fc"/>
+                        <text x="450" y="155" text-anchor="middle" fill="white" font-size="14">Debt > 20K?</text>
+                        
+                        <!-- Second Level - Left Left -->
+                        <rect x="50" y="250" width="80" height="40" rx="10" fill="#ff9a8b"/>
+                        <text x="90" y="275" text-anchor="middle" fill="white" font-size="14">No Loan</text>
+                        
+                        <!-- Second Level - Left Right -->
+                        <rect x="170" y="250" width="80" height="40" rx="10" fill="#49a09d"/>
+                        <text x="210" y="275" text-anchor="middle" fill="white" font-size="14">Loan</text>
+                        
+                        <!-- Second Level - Right Left -->
+                        <rect x="370" y="250" width="80" height="40" rx="10" fill="#49a09d"/>
+                        <text x="410" y="275" text-anchor="middle" fill="white" font-size="14">Loan</text>
+                        
+                        <!-- Second Level - Right Right -->
+                        <rect x="490" y="250" width="80" height="40" rx="10" fill="#ff9a8b"/>
+                        <text x="530" y="275" text-anchor="middle" fill="white" font-size="14">No Loan</text>
+                        
+                        <!-- Connecting Lines -->
+                        <line x1="270" y1="70" x2="180" y2="130" stroke="#333" stroke-width="2"/>
+                        <line x1="330" y1="70" x2="420" y2="130" stroke="#333" stroke-width="2"/>
+                        
+                        <line x1="120" y1="170" x2="90" y2="240" stroke="#333" stroke-width="2"/>
+                        <line x1="180" y1="170" x2="210" y2="240" stroke="#333" stroke-width="2"/>
+                        
+                        <line x1="420" y1="170" x2="410" y2="240" stroke="#333" stroke-width="2"/>
+                        <line x1="480" y1="170" x2="530" y2="240" stroke="#333" stroke-width="2"/>
+                        
+                        <!-- Decision Labels -->
+                        <text x="220" y="100" text-anchor="middle" fill="#333" font-size="14">No</text>
+                        <text x="380" y="100" text-anchor="middle" fill="#333" font-size="14">Yes</text>
+                        
+                        <text x="100" y="210" text-anchor="middle" fill="#333" font-size="14">No</text>
+                        <text x="200" y="210" text-anchor="middle" fill="#333" font-size="14">Yes</text>
+                        
+                        <text x="410" y="210" text-anchor="middle" fill="#333" font-size="14">No</text>
+                        <text x="510" y="210" text-anchor="middle" fill="#333" font-size="14">Yes</text>
+                        
+                        <!-- Legend -->
+                        <circle cx="50" cy="350" r="10" fill="#6a11cb"/>
+                        <text x="70" y="355" fill="#333" font-size="12">Root Node</text>
+                        
+                        <circle cx="150" cy="350" r="10" fill="#2575fc"/>
+                        <text x="170" y="355" fill="#333" font-size="12">Decision Node</text>
+                        
+                        <rect x="230" y="340" width="20" height="20" rx="5" fill="#49a09d"/>
+                        <text x="280" y="355" fill="#333" font-size="12">Leaf (Positive)</text>
+                        
+                        <rect x="350" y="340" width="20" height="20" rx="5" fill="#ff9a8b"/>
+                        <text x="400" y="355" fill="#333" font-size="12">Leaf (Negative)</text>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+           <h4>&copy; 2025 Machine Learning Hub | Created by Prof. Rupali Mahajan</h4>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>

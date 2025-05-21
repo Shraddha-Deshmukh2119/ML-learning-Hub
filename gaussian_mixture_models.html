@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaussian Mixture Models | Machine Learning Hub</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="topic-header">
+        <div class="container">
+            <a href="index.html" class="back-button"><i class="fas fa-arrow-left"></i> Back to Home</a>
+            <h1>Gaussian Mixture Models</h1>
+            <p>Probabilistic models for representing normally distributed clusters</p>
+        </div>
+    </header>
+
+    <section class="container">
+        <div class="topic-container">
+            <div class="topic-description">
+                <h2>What are Gaussian Mixture Models?</h2>
+                <p>Gaussian Mixture Models (GMMs) are probabilistic models that assume all data points are generated from a mixture of a finite number of Gaussian distributions with unknown parameters. GMMs are a form of soft clustering where each data point has a probability of belonging to each cluster.</p>
+                
+                <p>Unlike K-means, which assigns each point to exactly one cluster, GMMs allow points to belong to multiple clusters with different degrees of membership. This makes GMMs more flexible and capable of capturing complex structures in the data.</p>
+                
+                <p>Mathematically, a Gaussian mixture model is represented as:</p>
+                <div style="background-color: #f5f5f5; padding: 10px; border-radius: 5px; margin: 10px 0;">
+                    <p style="font-family: monospace; font-size: 16px; text-align: center;">
+                        p(x) = Σₖ πₖ N(x|μₖ,Σₖ)
+                    </p>
+                </div>
+                
+                <p>Where:</p>
+                <ul>
+                    <li>p(x) is the probability density of the data point x</li>
+                    <li>πₖ is the weight of the k-th mixture component (must sum to 1)</li>
+                    <li>N(x|μₖ,Σₖ) is the Gaussian probability density with mean μₖ and covariance Σₖ</li>
+                    <li>K is the number of mixture components (clusters)</li>
+                </ul>
+                
+                <h3>Learning Parameters:</h3>
+                <p>The parameters of a GMM (means, covariances, and mixture weights) are typically estimated using the Expectation-Maximization (EM) algorithm, which iteratively:</p>
+                <ol>
+                    <li><strong>E-step:</strong> Computes the probability that each data point belongs to each cluster</li>
+                    <li><strong>M-step:</strong> Updates the parameters based on these probabilities</li>
+                </ol>
+                
+                <h3>Advantages:</h3>
+                <ul>
+                    <li>Provides soft assignments of data points to clusters</li>
+                    <li>Can model clusters of different sizes and shapes</li>
+                    <li>Offers a measure of uncertainty through probabilities</li>
+                    <li>Can detect outliers (points with low probability under the model)</li>
+                    <li>Works well for mixed distributions</li>
+                </ul>
+                
+                <h3>Applications:</h3>
+                <ul>
+                    <li>Image segmentation</li>
+                    <li>Speaker recognition and verification</li>
+                    <li>Anomaly detection</li>
+                    <li>Financial modeling</li>
+                    <li>Biometric identification</li>
+                    <li>Text document clustering</li>
+                </ul>
+            </div>
+            
+            <div class="topic-video">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/q71Niz856KE" title="Gaussian Mixture Models Explained" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                
+                <div class="diagram-container">
+                    <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Gaussian Mixture Model Visualization -->
+                        
+                        <!-- Coordinate System -->
+                        <line x1="50" y1="350" x2="550" y2="350" stroke="#333" stroke-width="2"/>
+                        <line x1="50" y1="50" x2="50" y2="350" stroke="#333" stroke-width="2"/>
+                        
+                        <!-- Axis Labels -->
+                        <text x="300" y="380" text-anchor="middle" fill="#333" font-size="14">Feature 1</text>
+                        <text x="20" y="200" text-anchor="middle" fill="#333" font-size="14" transform="rotate(-90, 20, 200)">Feature 2</text>
+                        
+                        <!-- Data Points (colored by highest probability cluster) -->
+                        <!-- Cluster 1 (Purple) -->
+                        <circle cx="150" cy="150" r="4" fill="#6a11cb" opacity="0.7"/>
+                        <circle cx="170" cy="130" r="4" fill="#6a11cb" opacity="0.7"/>
+                        <circle cx="140" cy="140" r="4" fill="#6a11cb" opacity="0.7"/>
+                        <circle cx="160" cy="160" r="4" fill="#6a11cb" opacity="0.7"/>
+                        <circle cx="130" cy="150" r="4" fill="#6a11cb" opacity="0.7"/>
+                        <circle cx="180" cy="140" r="4" fill="#6a11cb" opacity="0.7"/>
+                        <circle cx="150" cy="120" r="4" fill="#6a11cb" opacity="0.7"/>
+                        <circle cx="160" cy="130" r="4" fill="#6a11cb" opacity="0.7"/>
+                        <circle cx="140" cy="160" r="4" fill="#6a11cb" opacity="0.7"/>
+                        <circle cx="170" cy="170" r="4" fill="#6a11cb" opacity="0.7"/>
+                        
+                        <!-- Cluster 2 (Orange) -->
+                        <circle cx="400" cy="200" r="4" fill="#ff9a8b" opacity="0.7"/>
+                        <circle cx="380" cy="220" r="4" fill="#ff9a8b" opacity="0.7"/>
+                        <circle cx="420" cy="220" r="4" fill="#ff9a8b" opacity="0.7"/>
+                        <circle cx="390" cy="190" r="4" fill="#ff9a8b" opacity="0.7"/>
+                        <circle cx="410" cy="210" r="4" fill="#ff9a8b" opacity="0.7"/>
+                        <circle cx="430" cy="200" r="4" fill="#ff9a8b" opacity="0.7"/>
+                        <circle cx="380" cy="180" r="4" fill="#ff9a8b" opacity="0.7"/>
+                        <circle cx="400" cy="230" r="4" fill="#ff9a8b" opacity="0.7"/>
+                        <circle cx="420" cy="180" r="4" fill="#ff9a8b" opacity="0.7"/>
+                        <circle cx="440" cy="210" r="4" fill="#ff9a8b" opacity="0.7"/>
+                        
+                        <!-- Cluster 3 (Blue) -->
+                        <circle cx="300" cy="300" r="4" fill="#2575fc" opacity="0.7"/>
+                        <circle cx="320" cy="320" r="4" fill="#2575fc" opacity="0.7"/>
+                        <circle cx="290" cy="290" r="4" fill="#2575fc" opacity="0.7"/>
+                        <circle cx="310" cy="310" r="4" fill="#2575fc" opacity="0.7"/>
+                        <circle cx="280" cy="320" r="4" fill="#2575fc" opacity="0.7"/>
+                        <circle cx="330" cy="290" r="4" fill="#2575fc" opacity="0.7"/>
+                        <circle cx="300" cy="280" r="4" fill="#2575fc" opacity="0.7"/>
+                        <circle cx="320" cy="300" r="4" fill="#2575fc" opacity="0.7"/>
+                        <circle cx="290" cy="310" r="4" fill="#2575fc" opacity="0.7"/>
+                        <circle cx="310" cy="330" r="4" fill="#2575fc" opacity="0.7"/>
+                        
+                        <!-- Gaussian Distributions -->
+                        <!-- First Gaussian (Purple) -->
+                        <ellipse cx="155" cy="145" rx="30" ry="25" fill="#6a11cb" opacity="0.2" stroke="#6a11cb" stroke-width="1"/>
+                        <ellipse cx="155" cy="145" rx="50" ry="45" fill="#6a11cb" opacity="0.1" stroke="#6a11cb" stroke-width="1" stroke-dasharray="3"/>
+                        <ellipse cx="155" cy="145" rx="70" ry="65" fill="#6a11cb" opacity="0.05" stroke="#6a11cb" stroke-width="1" stroke-dasharray="3"/>
+                        
+                        <!-- Second Gaussian (Orange) -->
+                        <ellipse cx="400" cy="200" rx="40" ry="30" fill="#ff9a8b" opacity="0.2" stroke="#ff9a8b" stroke-width="1"/>
+                        <ellipse cx="400" cy="200" rx="60" ry="50" fill="#ff9a8b" opacity="0.1" stroke="#ff9a8b" stroke-width="1" stroke-dasharray="3"/>
+                        <ellipse cx="400" cy="200" rx="80" ry="70" fill="#ff9a8b" opacity="0.05" stroke="#ff9a8b" stroke-width="1" stroke-dasharray="3"/>
+                        
+                        <!-- Third Gaussian (Blue) -->
+                        <ellipse cx="300" cy="300" rx="35" ry="35" fill="#2575fc" opacity="0.2" stroke="#2575fc" stroke-width="1"/>
+                        <ellipse cx="300" cy="300" rx="55" ry="55" fill="#2575fc" opacity="0.1" stroke="#2575fc" stroke-width="1" stroke-dasharray="3"/>
+                        <ellipse cx="300" cy="300" rx="75" ry="75" fill="#2575fc" opacity="0.05" stroke="#2575fc" stroke-width="1" stroke-dasharray="3"/>
+                        
+                        <!-- Means (Centers) -->
+                        <circle cx="155" cy="145" r="6" fill="#6a11cb" stroke="white" stroke-width="1"/>
+                        <circle cx="400" cy="200" r="6" fill="#ff9a8b" stroke="white" stroke-width="1"/>
+                        <circle cx="300" cy="300" r="6" fill="#2575fc" stroke="white" stroke-width="1"/>
+                        
+                        <!-- Border Points (Showing Membership Uncertainty) -->
+                        <circle cx="250" cy="200" r="5" fill="none" stroke="#333" stroke-width="1.5"/>
+                        <path d="M 250 200 A 5 5 0 0 1 250 195" fill="#6a11cb" stroke="none"/>
+                        <path d="M 250 200 A 5 5 0 1 0 250 195" fill="#ff9a8b" stroke="none"/>
+                        
+                        <circle cx="350" cy="250" r="5" fill="none" stroke="#333" stroke-width="1.5"/>
+                        <path d="M 350 250 A 5 5 0 0 1 350 245" fill="#ff9a8b" stroke="none"/>
+                        <path d="M 350 250 A 5 5 0 1 0 350 245" fill="#2575fc" stroke="none"/>
+                        
+                        <!-- Legend -->
+                        <circle cx="80" cy="70" r="6" fill="#6a11cb"/>
+                        <text x="95" y="73" fill="#333" font-size="12">Component 1 (π₁ = 0.3)</text>
+                        
+                        <circle cx="80" cy="95" r="6" fill="#ff9a8b"/>
+                        <text x="95" y="98" fill="#333" font-size="12">Component 2 (π₂ = 0.4)</text>
+                        
+                        <circle cx="80" cy="120" r="6" fill="#2575fc"/>
+                        <text x="95" y="123" fill="#333" font-size="12">Component 3 (π₃ = 0.3)</text>
+                        
+                        <circle cx="350" cy="70" r="4" fill="none" stroke="#333" stroke-width="1.5"/>
+                        <path d="M 350 70 A 4 4 0 0 1 350 66" fill="#6a11cb" stroke="none"/>
+                        <path d="M 350 70 A 4 4 0 1 0 350 66" fill="#ff9a8b" stroke="none"/>
+                        <text x="365" y="73" fill="#333" font-size="12">Mixed Membership</text>
+                        
+                        <!-- Probability Density Function -->
+                        <rect x="450" y="100" width="100" height="70" rx="5" fill="white" stroke="#333" stroke-width="1"/>
+                        <text x="500" y="120" text-anchor="middle" fill="#333" font-size="12">PDF for a point:</text>
+                        <text x="500" y="140" text-anchor="middle" fill="#333" font-size="10">p(x) = Σₖ πₖ N(x|μₖ,Σₖ)</text>
+                        <text x="500" y="160" text-anchor="middle" fill="#333" font-size="10">Maximized by EM</text>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+             <h4>&copy; 2025 Machine Learning Hub | Created by Prof. Rupali Mahajan</h4>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>

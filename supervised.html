@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supervised Learning | Machine Learning Hub</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="topic-header">
+        <div class="container">
+            <a href="index.html" class="back-button"><i class="fas fa-arrow-left"></i> Back to Home</a>
+            <h1>Supervised Learning</h1>
+            <p>Learning from labeled data to make predictions</p>
+        </div>
+    </header>
+
+    <section class="container">
+        <div class="topic-container">
+            <div class="topic-description">
+                <h2>What is Supervised Learning?</h2>
+                <p>Supervised learning is a machine learning paradigm where the algorithm learns from labeled training data. The algorithm makes predictions based on that data and is corrected when predictions are wrong. The learning stops when the algorithm achieves an acceptable level of performance.</p>
+                
+                <p>In supervised learning, each example is a pair consisting of:</p>
+                <ul>
+                    <li>An input object (typically a vector of features)</li>
+                    <li>A desired output value (also called the supervisory signal)</li>
+                </ul>
+                
+                <p>The supervised learning algorithm analyzes the training data and produces an inferred function, which can be used for mapping new examples. An optimal scenario allows the algorithm to correctly determine the class labels for unseen instances.</p>
+                
+                <h3>Common Supervised Learning Algorithms:</h3>
+                <ul>
+                    <li><a href="linear-regression.html">Linear Regression</a></li>
+                    <li><a href="decision-trees.html">Decision Trees</a></li>
+                    <li><a href="neural-networks.html">Neural Networks</a></li>
+                    <li><a href="svm.html">Support Vector Machine</a></li>
+                    <li><a href="naive-bayes.html">Naive Bayes</a></li>
+                    <li><a href="knn.html">K-Nearest Neighbour</a></li>
+                </ul>
+            </div>
+            
+            <div class="topic-video">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/4qVRBYAdLAo" title="Supervised Learning Explained" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                
+                <div class="diagram-container">
+                    <svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Supervised Learning Flow Diagram -->
+                        <!-- Training Data Section -->
+                        <rect x="50" y="50" width="200" height="100" rx="10" fill="#6a11cb" opacity="0.8"/>
+                        <text x="150" y="100" text-anchor="middle" fill="white" font-size="18">Training Data</text>
+                        <text x="150" y="130" text-anchor="middle" fill="white" font-size="14">(Labeled Examples)</text>
+                        
+                        <!-- Algorithm Section -->
+                        <rect x="300" y="150" width="200" height="100" rx="10" fill="#2575fc" opacity="0.8"/>
+                        <text x="400" y="200" text-anchor="middle" fill="white" font-size="18">Learning Algorithm</text>
+                        
+                        <!-- Model Section -->
+                        <rect x="550" y="50" width="200" height="100" rx="10" fill="#49a09d" opacity="0.8"/>
+                        <text x="650" y="100" text-anchor="middle" fill="white" font-size="18">Trained Model</text>
+                        
+                        <!-- New Data Section -->
+                        <rect x="50" y="250" width="200" height="100" rx="10" fill="#ff9a8b" opacity="0.8"/>
+                        <text x="150" y="300" text-anchor="middle" fill="white" font-size="18">New Data</text>
+                        <text x="150" y="330" text-anchor="middle" fill="white" font-size="14">(Unlabeled)</text>
+                        
+                        <!-- Prediction Section -->
+                        <rect x="550" y="250" width="200" height="100" rx="10" fill="#ff9a8b" opacity="0.8"/>
+                        <text x="650" y="300" text-anchor="middle" fill="white" font-size="18">Predictions</text>
+                        
+                        <!-- Arrows -->
+                        <path d="M 250 100 L 300 200" stroke="#333" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+                        <path d="M 500 200 L 550 100" stroke="#333" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+                        <path d="M 250 300 L 550 300" stroke="#333" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+                        <path d="M 650 150 L 650 250" stroke="#333" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+                        
+                        <!-- Arrow Marker Definition -->
+                        <defs>
+                            <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+                                <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+                            </marker>
+                        </defs>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <h4>&copy; 2025 Machine Learning Hub | Created by Prof. Rupali Mahajan</h4>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>

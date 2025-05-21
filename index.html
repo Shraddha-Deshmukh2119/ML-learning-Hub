@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Machine Learning Hub</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="main-title">Welcome to the Machine Learning Hub</h1>
+            <p class="subtitle">Explore the fascinating world of algorithms that learn from data</p>
+        </div>
+    </header>
+
+    <section class="intro container">
+        <h2>What is Machine Learning?</h2>
+        <div class="intro-content">
+            <div class="intro-text">
+                <p>Machine Learning is a subset of artificial intelligence that gives systems the ability to automatically learn and improve from experience without being explicitly programmed.</p>
+                <p>Arthur Samuel, an American pioneer in computer gaming and artificial intelligence, coined the term "Machine Learning" in 1959. However, the field really took off in the 1990s with the development of statistical methods for machine learning and the advent of big data.</p>
+                <p>In essence, machine learning algorithms build mathematical models based on sample data, known as "training data," to make predictions or decisions without being explicitly programmed to perform the task.</p>
+            </div>
+            <div class="intro-video">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/f_uwKZIAeM0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <section class="ml-tree-section container">
+        <h2>Types of Machine Learning</h2>
+        <p>Explore the different approaches to teaching machines how to learn</p>
+        
+        <div class="tree-container">
+            <div class="tree-node main-node">
+                <div class="node-content">
+                    <h3>Machine Learning</h3>
+                    <p>Click to explore different types</p>
+                </div>
+                <div class="branches">
+                    <div class="tree-node">
+                        <div class="node-content" data-link="supervised.html">
+                            <h3>Supervised Learning</h3>
+                            <p>Learning from labeled data</p>
+                            <span class="expand-icon"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="sub-branches hidden">
+                            <div class="tree-node algorithm">
+                                <div class="node-content" data-link="linear-regression.html">
+                                    <h4>Linear Regression</h4>
+                                </div>
+                            </div>
+                            <div class="tree-node algorithm">
+                                <div class="node-content" data-link="decision-trees.html">
+                                    <h4>Decision Trees</h4>
+                                </div>
+                            </div>
+                            <div class="tree-node algorithm">
+                                <div class="node-content" data-link="neural-networks.html">
+                                    <h4>Neural Networks</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tree-node">
+                        <div class="node-content" data-link="unsupervised.html">
+                            <h3>Unsupervised Learning</h3>
+                            <p>Finding patterns in unlabeled data</p>
+                            <span class="expand-icon"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="sub-branches hidden">
+                            <div class="tree-node algorithm">
+                                <div class="node-content" data-link="k-means.html">
+                                    <h4>K-Means Clustering</h4>
+                                </div>
+                            </div>
+                            <div class="tree-node algorithm">
+                                <div class="node-content" data-link="pca.html">
+                                    <h4>Principal Component Analysis</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tree-node">
+                        <div class="node-content" data-link="reinforcement.html">
+                            <h3>Reinforcement Learning</h3>
+                            <p>Learning through interaction with environment</p>
+                            <span class="expand-icon"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="sub-branches hidden">
+                            <div class="tree-node algorithm">
+                                <div class="node-content" data-link="q-learning.html">
+                                    <h4>Q-Learning</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="resources-section container">
+        <h2>ML Resources and Tools</h2>
+        <p>Explore our comprehensive guides and reference materials</p>
+        
+        <div class="resources-grid">
+            <div class="resource-card">
+                <div class="resource-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>ML Cheat Sheet</h3>
+                <p>Quick reference guide for algorithms, metrics, and best practices</p>
+                <a href="ml-cheatsheet.html" class="btn">Explore <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="resource-card">
+                <div class="resource-icon">
+                    <i class="fas fa-history"></i>
+                </div>
+                <h3>ML History Timeline</h3>
+                <p>Interactive timeline showing the evolution of machine learning</p>
+                <a href="ml-history-timeline.html" class="btn">Explore <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <section class="get-started container">
+        <h2>Ready to start your Machine Learning journey?</h2>
+        <p>Click on any topic in the tree above to learn more about specific algorithms and approaches.</p>
+    </section>
+
+    <footer>
+        <div class="container">
+            <h4>&copy; 2025 Machine Learning Hub | Created by Prof. Rupali Mahajan</h4>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script src="tree.js"></script>
+</body>
+</html>

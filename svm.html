@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Vector Machines | Machine Learning Hub</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="topic-header">
+        <div class="container">
+            <a href="index.html" class="back-button"><i class="fas fa-arrow-left"></i> Back to Home</a>
+            <h1>Support Vector Machines</h1>
+            <p>Finding optimal boundaries for classification</p>
+        </div>
+    </header>
+
+    <section class="container">
+        <div class="topic-container">
+            <div class="topic-description">
+                <h2>What are Support Vector Machines?</h2>
+                <p>Support Vector Machines (SVMs) are supervised learning models used for classification and regression analysis. They are particularly effective in high-dimensional spaces and cases where the number of dimensions exceeds the number of samples.</p>
+                
+                <p>SVMs work by finding a hyperplane that best separates different classes in the feature space. The goal is to maximize the margin between the hyperplane and the closest training data points (called support vectors).</p>
+                
+                <p>Key concepts in SVMs include:</p>
+                <ul>
+                    <li><strong>Hyperplane:</strong> The decision boundary that separates different classes</li>
+                    <li><strong>Margin:</strong> The distance between the hyperplane and the nearest data point from either class</li>
+                    <li><strong>Support Vectors:</strong> The data points that are closest to the hyperplane and influence its position and orientation</li>
+                    <li><strong>Kernel Trick:</strong> A method to implicitly map input data into higher-dimensional feature spaces where linear separation becomes possible</li>
+                </ul>
+                
+                <h3>Common Kernel Functions:</h3>
+                <ul>
+                    <li>Linear Kernel: K(x, y) = x · y</li>
+                    <li>Polynomial Kernel: K(x, y) = (γx · y + r)^d</li>
+                    <li>Radial Basis Function (RBF): K(x, y) = exp(-γ||x - y||²)</li>
+                    <li>Sigmoid: K(x, y) = tanh(γx · y + r)</li>
+                </ul>
+                
+                <h3>Applications:</h3>
+                <ul>
+                    <li>Text and image classification</li>
+                    <li>Handwriting recognition</li>
+                    <li>Bioinformatics (protein classification, cancer classification)</li>
+                    <li>Face detection</li>
+                    <li>Spam filtering</li>
+                </ul>
+            </div>
+            
+            <div class="topic-video">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/efR1C6CvhmE" title="Support Vector Machines Explained" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                
+                <div class="diagram-container">
+                    <svg viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg">
+                        <!-- SVM Visualization -->
+                        
+                        <!-- Coordinate System -->
+                        <line x1="50" y1="350" x2="450" y2="350" stroke="#333" stroke-width="2"/>
+                        <line x1="50" y1="50" x2="50" y2="350" stroke="#333" stroke-width="2"/>
+                        
+                        <!-- Axis Labels -->
+                        <text x="250" y="380" text-anchor="middle" fill="#333" font-size="14">Feature 1</text>
+                        <text x="20" y="200" text-anchor="middle" fill="#333" font-size="14" transform="rotate(-90, 20, 200)">Feature 2</text>
+                        
+                        <!-- Class 1 Points (Circles) -->
+                        <circle cx="120" cy="120" r="7" fill="#6a11cb"/>
+                        <circle cx="150" cy="100" r="7" fill="#6a11cb"/>
+                        <circle cx="130" cy="150" r="7" fill="#6a11cb"/>
+                        <circle cx="100" cy="130" r="7" fill="#6a11cb"/>
+                        <circle cx="110" cy="90" r="7" fill="#6a11cb"/>
+                        <circle cx="90" cy="110" r="7" fill="#6a11cb"/>
+                        <circle cx="140" cy="140" r="7" fill="#6a11cb"/>
+                        
+                        <!-- Class 2 Points (Squares) -->
+                        <rect x="330" y="250" width="14" height="14" fill="#ff9a8b" transform="rotate(45, 337, 257)"/>
+                        <rect x="370" y="270" width="14" height="14" fill="#ff9a8b" transform="rotate(45, 377, 277)"/>
+                        <rect x="350" y="230" width="14" height="14" fill="#ff9a8b" transform="rotate(45, 357, 237)"/>
+                        <rect x="390" y="250" width="14" height="14" fill="#ff9a8b" transform="rotate(45, 397, 257)"/>
+                        <rect x="360" y="290" width="14" height="14" fill="#ff9a8b" transform="rotate(45, 367, 297)"/>
+                        <rect x="400" y="270" width="14" height="14" fill="#ff9a8b" transform="rotate(45, 407, 277)"/>
+                        <rect x="380" y="230" width="14" height="14" fill="#ff9a8b" transform="rotate(45, 387, 237)"/>
+                        
+                        <!-- Decision Boundary (Hyperplane) -->
+                        <line x1="80" y1="300" x2="400" y2="100" stroke="#2575fc" stroke-width="3"/>
+                        
+                        <!-- Margin Lines -->
+                        <line x1="65" y1="290" x2="385" y2="90" stroke="#2575fc" stroke-width="1" stroke-dasharray="5"/>
+                        <line x1="95" y1="310" x2="415" y2="110" stroke="#2575fc" stroke-width="1" stroke-dasharray="5"/>
+                        
+                        <!-- Support Vectors Highlight -->
+                        <circle cx="140" cy="140" r="12" fill="none" stroke="#2575fc" stroke-width="2"/>
+                        <rect x="350" y="230" width="24" height="24" fill="none" stroke="#2575fc" stroke-width="2" transform="rotate(45, 357, 237)"/>
+                        
+                        <!-- Legend -->
+                        <circle cx="70" cy="50" r="7" fill="#6a11cb"/>
+                        <text x="90" y="55" fill="#333" font-size="12">Class 1</text>
+                        
+                        <rect x="150" y="43" width="14" height="14" fill="#ff9a8b" transform="rotate(45, 157, 50)"/>
+                        <text x="180" y="55" fill="#333" font-size="12">Class 2</text>
+                        
+                        <line x1="230" y1="50" x2="280" y2="50" stroke="#2575fc" stroke-width="3"/>
+                        <text x="330" y="55" fill="#333" font-size="12">Decision Boundary</text>
+                        
+                        <line x1="400" y1="50" x2="420" y2="50" stroke="#2575fc" stroke-width="1" stroke-dasharray="5"/>
+                        <text x="450" y="55" fill="#333" font-size="12">Margin</text>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+             <h4>&copy; 2025 Machine Learning Hub | Created by Prof. Rupali Mahajan</h4>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K-Means Clustering | Machine Learning Hub</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="topic-header">
+        <div class="container">
+            <a href="index.html" class="back-button"><i class="fas fa-arrow-left"></i> Back to Home</a>
+            <h1>K-Means Clustering</h1>
+            <p>Partitioning data into distinct groups</p>
+        </div>
+    </header>
+
+    <section class="container">
+        <div class="topic-container">
+            <div class="topic-description">
+                <h2>What is K-Means Clustering?</h2>
+                <p>K-Means clustering is one of the simplest and most popular unsupervised machine learning algorithms. It is used to partition a set of data points into K distinct clusters, where each data point belongs to the cluster with the nearest mean (cluster centroid).</p>
+                
+                <p>The basic steps of the K-Means algorithm are:</p>
+                <ol>
+                    <li>Select K points as initial centroids (randomly or using a specific method)</li>
+                    <li>Assign each data point to the nearest centroid, forming K clusters</li>
+                    <li>Recalculate the centroid of each cluster as the mean of all points in that cluster</li>
+                    <li>Repeat steps 2 and 3 until centroids no longer move significantly or a maximum number of iterations is reached</li>
+                </ol>
+                
+                <p>The objective of K-Means is to minimize the sum of squared distances between data points and their assigned cluster centroids.</p>
+                
+                <h3>Mathematical Formulation:</h3>
+                <div style="background-color: #f5f5f5; padding: 10px; border-radius: 5px; margin: 10px 0;">
+                    <p style="font-family: monospace; font-size: 16px; text-align: center;">
+                        minimize J = Σₖ Σᵢ ||xᵢ - μₖ||²
+                    </p>
+                </div>
+                <p>Where:</p>
+                <ul>
+                    <li>J is the objective function (sum of squared distances)</li>
+                    <li>xᵢ is the i-th data point</li>
+                    <li>μₖ is the centroid of cluster k</li>
+                    <li>||xᵢ - μₖ||² is the squared Euclidean distance</li>
+                </ul>
+                
+                <h3>Applications:</h3>
+                <ul>
+                    <li>Customer segmentation</li>
+                    <li>Image compression</li>
+                    <li>Document clustering</li>
+                    <li>Anomaly detection</li>
+                    <li>Feature learning</li>
+                </ul>
+            </div>
+            
+            <div class="topic-video">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/4b5d3muPQmA" title="K-Means Clustering Explained" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                
+                <div class="diagram-container">
+                    <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+                        <!-- K-Means Clustering Visualization -->
+                        
+                        <!-- Coordinate System -->
+                        <line x1="50" y1="350" x2="550" y2="350" stroke="#333" stroke-width="2"/>
+                        <line x1="50" y1="50" x2="50" y2="350" stroke="#333" stroke-width="2"/>
+                        
+                        <!-- Axis Labels -->
+                        <text x="300" y="380" text-anchor="middle" fill="#333" font-size="14">Feature 1</text>
+                        <text x="20" y="200" text-anchor="middle" fill="#333" font-size="14" transform="rotate(-90, 20, 200)">Feature 2</text>
+                        
+                        <!-- Cluster 1 (Red) -->
+                        <circle cx="150" cy="120" r="7" fill="#ff9a8b"/>
+                        <circle cx="180" cy="140" r="7" fill="#ff9a8b"/>
+                        <circle cx="130" cy="150" r="7" fill="#ff9a8b"/>
+                        <circle cx="160" cy="100" r="7" fill="#ff9a8b"/>
+                        <circle cx="200" cy="110" r="7" fill="#ff9a8b"/>
+                        <circle cx="170" cy="160" r="7" fill="#ff9a8b"/>
+                        
+                        <!-- Cluster 2 (Blue) -->
+                        <circle cx="400" cy="120" r="7" fill="#2575fc"/>
+                        <circle cx="420" cy="150" r="7" fill="#2575fc"/>
+                        <circle cx="380" cy="130" r="7" fill="#2575fc"/>
+                        <circle cx="440" cy="100" r="7" fill="#2575fc"/>
+                        <circle cx="410" cy="90" r="7" fill="#2575fc"/>
+                        <circle cx="430" cy="130" r="7" fill="#2575fc"/>
+                        
+                        <!-- Cluster 3 (Purple) -->
+                        <circle cx="270" cy="280" r="7" fill="#6a11cb"/>
+                        <circle cx="300" cy="260" r="7" fill="#6a11cb"/>
+                        <circle cx="240" cy="250" r="7" fill="#6a11cb"/>
+                        <circle cx="280" cy="290" r="7" fill="#6a11cb"/>
+                        <circle cx="320" cy="270" r="7" fill="#6a11cb"/>
+                        <circle cx="260" cy="240" r="7" fill="#6a11cb"/>
+                        
+                        <!-- Centroids -->
+                        <circle cx="165" cy="130" r="12" fill="none" stroke="#ff9a8b" stroke-width="3"/>
+                        <circle cx="413" cy="120" r="12" fill="none" stroke="#2575fc" stroke-width="3"/>
+                        <circle cx="278" cy="265" r="12" fill="none" stroke="#6a11cb" stroke-width="3"/>
+                        
+                        <!-- Centroid Labels -->
+                        <text x="165" y="130" text-anchor="middle" dominant-baseline="middle" fill="#ff9a8b" font-size="12" font-weight="bold">C₁</text>
+                        <text x="413" y="120" text-anchor="middle" dominant-baseline="middle" fill="#2575fc" font-size="12" font-weight="bold">C₂</text>
+                        <text x="278" y="265" text-anchor="middle" dominant-baseline="middle" fill="#6a11cb" font-size="12" font-weight="bold">C₃</text>
+                        
+                        <!-- Legend -->
+                        <circle cx="100" cy="50" r="7" fill="#ff9a8b"/>
+                        <text x="120" y="55" fill="#333" font-size="12">Cluster 1</text>
+                        
+                        <circle cx="200" cy="50" r="7" fill="#2575fc"/>
+                        <text x="220" y="55" fill="#333" font-size="12">Cluster 2</text>
+                        
+                        <circle cx="300" cy="50" r="7" fill="#6a11cb"/>
+                        <text x="320" y="55" fill="#333" font-size="12">Cluster 3</text>
+                        
+                        <circle cx="400" cy="50" r="10" fill="none" stroke="#333" stroke-width="2"/>
+                        <text x="420" y="55" fill="#333" font-size="12">Centroids</text>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+           <h4>&copy; 2025 Machine Learning Hub | Created by Prof. Rupali Mahajan</h4>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>

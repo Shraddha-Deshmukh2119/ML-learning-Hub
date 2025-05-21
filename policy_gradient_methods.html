@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Policy Gradient Methods | Machine Learning Hub</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="topic-header">
+        <div class="container">
+            <a href="index.html" class="back-button"><i class="fas fa-arrow-left"></i> Back to Home</a>
+            <h1>Policy Gradient Methods</h1>
+            <p>Directly optimizing policy parameters for reinforcement learning</p>
+        </div>
+    </header>
+
+    <section class="container">
+        <div class="topic-container">
+            <div class="topic-description">
+                <h2>What are Policy Gradient Methods?</h2>
+                <p>Policy Gradient Methods are a class of reinforcement learning algorithms that directly optimize the policy parameters to maximize expected rewards, without explicitly learning a value function. Unlike value-based methods (such as Q-learning), policy gradient methods parameterize the policy directly and update it using gradient ascent on the expected reward.</p>
+                
+                <p>The key idea is to adjust the policy parameters in the direction that increases the probability of actions that lead to higher rewards and decreases the probability of actions that lead to lower rewards.</p>
+                
+                <h3>Policy Representation:</h3>
+                <p>The policy is typically represented as a probability distribution over actions given a state, parameterized by θ:</p>
+                <div style="background-color: #f5f5f5; padding: 10px; border-radius: 5px; margin: 10px 0;">
+                    <p style="font-family: monospace; font-size: 16px; text-align: center;">
+                        π<sub>θ</sub>(a|s) = P(a|s,θ)
+                    </p>
+                </div>
+                
+                <p>The objective is to find the parameters θ that maximize the expected return:</p>
+                <div style="background-color: #f5f5f5; padding: 10px; border-radius: 5px; margin: 10px 0;">
+                    <p style="font-family: monospace; font-size: 16px; text-align: center;">
+                        J(θ) = E<sub>π<sub>θ</sub></sub>[Σ r<sub>t</sub>]
+                    </p>
+                </div>
+                
+                <h3>Policy Gradient Theorem:</h3>
+                <p>The policy gradient theorem provides a way to compute the gradient of the expected return with respect to the policy parameters:</p>
+                <div style="background-color: #f5f5f5; padding: 10px; border-radius: 5px; margin: 10px 0;">
+                    <p style="font-family: monospace; font-size: 16px; text-align: center;">
+                        ∇<sub>θ</sub>J(θ) = E<sub>π<sub>θ</sub></sub>[∇<sub>θ</sub>log π<sub>θ</sub>(a|s) · Q<sup>π</sup>(s,a)]
+                    </p>
+                </div>
+                
+                <h3>Common Policy Gradient Methods:</h3>
+                <ul>
+                    <li><strong>REINFORCE (Monte Carlo Policy Gradient):</strong> Uses complete episode returns to update the policy</li>
+                    <li><strong>Actor-Critic Methods:</strong> Combines policy gradient (actor) with value function approximation (critic)</li>
+                    <li><strong>Trust Region Policy Optimization (TRPO):</strong> Constrains policy updates to improve stability</li>
+                    <li><strong>Proximal Policy Optimization (PPO):</strong> Simplifies TRPO while maintaining its advantages</li>
+                    <li><strong>Deterministic Policy Gradient (DPG):</strong> Extends policy gradients to deterministic policies</li>
+                    <li><strong>Deep Deterministic Policy Gradient (DDPG):</strong> Combines DPG with deep learning</li>
+                </ul>
+                
+                <h3>Advantages of Policy Gradient Methods:</h3>
+                <ul>
+                    <li>Can learn stochastic policies, which may be optimal in partially observable environments</li>
+                    <li>Effective in high-dimensional or continuous action spaces</li>
+                    <li>Convergence properties are often better than value-based methods</li>
+                    <li>Can incorporate domain knowledge more easily through policy design</li>
+                </ul>
+                
+                <h3>Challenges:</h3>
+                <ul>
+                    <li>Typically have high variance in gradient estimates, requiring many samples</li>
+                    <li>May converge to local optima rather than global optima</li>
+                    <li>Sensitive to hyperparameter choices</li>
+                    <li>Can be sample inefficient without careful design</li>
+                </ul>
+                
+                <h3>Applications:</h3>
+                <ul>
+                    <li>Robotic control and manipulation</li>
+                    <li>Game playing with continuous action spaces</li>
+                    <li>Natural language processing</li>
+                    <li>Resource allocation and scheduling</li>
+                    <li>Autonomous vehicle control</li>
+                </ul>
+            </div>
+            
+            <div class="topic-video">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/2pWv7GOvuf0" title="Policy Gradient Methods Explained" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                
+                <div class="diagram-container">
+                    <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Policy Gradient Methods Visualization -->
+                        
+                        <!-- Environment -->
+                        <rect x="50" y="150" width="100" height="100" fill="#f5f5f5" stroke="#333" stroke-width="2"/>
+                        <text x="100" y="205" text-anchor="middle" fill="#333" font-size="14">Environment</text>
+                        
+                        <!-- Agent Box -->
+                        <rect x="300" y="100" width="200" height="200" fill="#f5f5f5" stroke="#333" stroke-width="2" rx="10"/>
+                        <text x="400" y="125" text-anchor="middle" fill="#333" font-size="16" font-weight="bold">Policy Gradient Agent</text>
+                        
+                        <!-- Policy Network (Actor) -->
+                        <rect x="350" y="140" width="100" height="60" fill="#6a11cb" opacity="0.7" rx="5"/>
+                        <text x="400" y="160" text-anchor="middle" fill="white" font-size="12">Policy Network</text>
+                        <text x="400" y="180" text-anchor="middle" fill="white" font-size="12">π<tspan baseline-shift="sub" font-size="10">θ</tspan>(a|s)</text>
+                        
+                        <!-- Value Network (Critic) - for Actor-Critic -->
+                        <rect x="350" y="210" width="100" height="60" fill="#2575fc" opacity="0.7" rx="5"/>
+                        <text x="400" y="230" text-anchor="middle" fill="white" font-size="12">Value Network</text>
+                        <text x="400" y="250" text-anchor="middle" fill="white" font-size="12">V<tspan baseline-shift="sub" font-size="10">φ</tspan>(s)</text>
+                        
+                        <!-- Action Flow -->
+                        <line x1="350" y1="170" x2="170" y2="170" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+                        <text x="250" y="160" text-anchor="middle" fill="#333" font-size="12">Action (a)</text>
+                        <text x="250" y="175" text-anchor="middle" fill="#333" font-size="12">~ π<tspan baseline-shift="sub" font-size="10">θ</tspan>(a|s)</text>
+                        
+                        <!-- State/Reward Flow -->
+                        <line x1="170" y1="230" x2="350" y2="230" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+                        <text x="250" y="250" text-anchor="middle" fill="#333" font-size="12">State (s), Reward (r)</text>
+                        
+                        <!-- Gradient Update -->
+                        <path d="M 400 100 C 420 80 450 70 480 80 C 510 90 515 110 515 130 C 515 150 505 170 470 170" stroke="#ff9a8b" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+                        <text x="515" y="110" text-anchor="middle" fill="#ff9a8b" font-size="12">Policy</text>
+                        <text x="515" y="125" text-anchor="middle" fill="#ff9a8b" font-size="12">Gradient</text>
+                        <text x="515" y="140" text-anchor="middle" fill="#ff9a8b" font-size="12">Update</text>
+                        
+                        <!-- Policy Gradient Formula -->
+                        <rect x="430" y="40" width="150" height="50" rx="5" fill="white" stroke="#333" stroke-width="1"/>
+                        <text x="505" y="60" text-anchor="middle" fill="#333" font-size="10">∇<tspan baseline-shift="sub" font-size="8">θ</tspan>J(θ) = E[∇<tspan baseline-shift="sub" font-size="8">θ</tspan>log π<tspan baseline-shift="sub" font-size="8">θ</tspan>(a|s) · R]</text>
+                        <text x="505" y="80" text-anchor="middle" fill="#333" font-size="10">Maximize Expected Return</text>
+                        
+                        <!-- Advantage Estimation (for Actor-Critic) -->
+                        <path d="M 400 210 C 330 200 320 180 345 180" stroke="#2575fc" stroke-width="1.5" fill="none" stroke-dasharray="4" marker-end="url(#arrowhead)"/>
+                        <text x="320" y="190" text-anchor="middle" fill="#2575fc" font-size="10">Advantage</text>
+                        <text x="320" y="200" text-anchor="middle" fill="#2575fc" font-size="10">Estimation</text>
+                        
+                        <!-- Algorithm Comparison -->
+                        <rect x="50" y="300" width="500" height="80" rx="5" fill="#f5f5f5" stroke="#333" stroke-width="1"/>
+                        <line x1="200" y1="300" x2="200" y2="380" stroke="#333" stroke-width="1"/>
+                        <line x1="350" y1="300" x2="350" y2="380" stroke="#333" stroke-width="1"/>
+                        
+                        <text x="125" y="320" text-anchor="middle" fill="#333" font-size="14" font-weight="bold">REINFORCE</text>
+                        <text x="125" y="340" text-anchor="middle" fill="#333" font-size="10">Uses Monte Carlo</text>
+                        <text x="125" y="355" text-anchor="middle" fill="#333" font-size="10">returns (high variance)</text>
+                        <text x="125" y="370" text-anchor="middle" fill="#333" font-size="10">Simple implementation</text>
+                        
+                        <text x="275" y="320" text-anchor="middle" fill="#333" font-size="14" font-weight="bold">Actor-Critic</text>
+                        <text x="275" y="340" text-anchor="middle" fill="#333" font-size="10">Uses value function</text>
+                        <text x="275" y="355" text-anchor="middle" fill="#333" font-size="10">to reduce variance</text>
+                        <text x="275" y="370" text-anchor="middle" fill="#333" font-size="10">More stable learning</text>
+                        
+                        <text x="425" y="320" text-anchor="middle" fill="#333" font-size="14" font-weight="bold">PPO/TRPO</text>
+                        <text x="425" y="340" text-anchor="middle" fill="#333" font-size="10">Constrains policy updates</text>
+                        <text x="425" y="355" text-anchor="middle" fill="#333" font-size="10">for better stability</text>
+                        <text x="425" y="370" text-anchor="middle" fill="#333" font-size="10">State-of-the-art performance</text>
+                        
+                        <!-- Arrow Marker Definition -->
+                        <defs>
+                            <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+                            </marker>
+                        </defs>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+             <h4>&copy; 2025 Machine Learning Hub | Created by Prof. Rupali Mahajan</h4>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>

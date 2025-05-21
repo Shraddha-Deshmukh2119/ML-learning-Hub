@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ML Cheat Sheet | Machine Learning Hub</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+        
+        .comparison-table th, 
+        .comparison-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .comparison-table th {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            position: sticky;
+            top: 0;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background-color: #f5f5f5;
+        }
+        
+        .comparison-table tr:hover {
+            background-color: #e9e9e9;
+        }
+        
+        .pros {
+            color: #3c9e50;
+        }
+        
+        .cons {
+            color: #e74c3c;
+        }
+        
+        .metrics-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin: 15px 0;
+        }
+        
+        .metrics-card h3 {
+            margin-top: 0;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
+            color: #333;
+        }
+        
+        .formula {
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+            text-align: center;
+            margin: 10px 0;
+        }
+        
+        .category-section {
+            margin-bottom: 40px;
+        }
+        
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .tab-link {
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-bottom: none;
+            margin-right: 5px;
+            border-radius: 5px 5px 0 0;
+            font-weight: bold;
+        }
+        
+        .tab-link.active {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            border-color: #6a11cb;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <header class="topic-header">
+        <div class="container">
+            <a href="index.html" class="back-button"><i class="fas fa-arrow-left"></i> Back to Home</a>
+            <h1>Machine Learning Cheat Sheet</h1>
+            <p>Quick reference guide for algorithms, metrics, and best practices</p>
+        </div>
+    </header>
+
+    <section class="container">
+        <div class="tabs">
+            <div class="tab-link active" onclick="openTab('algorithm-comparison')">Algorithm Comparison</div>
+            <div class="tab-link" onclick="openTab('evaluation-metrics')">Evaluation Metrics</div>
+            <div class="tab-link" onclick="openTab('best-practices')">Best Practices</div>
+        </div>
+        
+        <div id="algorithm-comparison" class="tab-content active">
+            <h2>Algorithm Comparison</h2>
+            <p>This table provides a quick comparison of common machine learning algorithms, their strengths, weaknesses, and best use cases.</p>
+            
+            <h3>Supervised Learning Algorithms</h3>
+            <div class="table-responsive">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Algorithm</th>
+                            <th>Strengths</th>
+                            <th>Weaknesses</th>
+                            <th>Best Use Cases</th>
+                            <th>Complexity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Linear Regression</td>
+                            <td>
+                                <ul class="pros">
+                                    <li>Simple and interpretable</li>
+                                    <li>Computationally efficient</li>
+                                    <li>Works well with linear relationships</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="cons">
+                                    <li>Assumes linear relationship</li>
+                                    <li>Sensitive to outliers</li>
+                                    <li>Cannot capture complex patterns</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>Sales forecasting</li>
+                                    <li>Risk assessment</li>
+                                    <li>Simple trend analysis</li>
+                                </ul>
+                            </td>
+                            <td>
+                                Training: O(n³)<br>
+                                Prediction: O(n)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Decision Trees</td>
+                            <td>
+                                <ul class="pros">
+                                    <li>Intuitive and easy to explain</li>
+                                    <li>Handles numerical and categorical data</li>
+                                    <li>No data normalization required</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="cons">
+                                    <li>Prone to overfitting</li>
+                                    <li>Unstable (small changes in data can significantly change tree)</li>
+                                    <li>Biased toward features with more levels</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>Credit risk assessment</li>
+                                    <li>Medical diagnosis</li>
+                                    <li>Customer churn prediction</li>
+                                </ul>
+                            </td>
+                            <td>
+                                Training: O(n * m * log(m))<br>
+                                Prediction: O(log(m))
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Random Forest</td>
+                            <td>
+                                <ul class="pros">
+                                    <li>Reduces overfitting through ensemble</li>
+                                    <li>Handles large feature spaces</li>
+                                    <li>Provides feature importance</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="cons">
+                                    <li>Less interpretable than single trees</li>
+                                    <li>Computationally intensive</li>
+                                    <li>Slower for real-time predictions</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>Fraud detection</li>
+                                    <li>Marketing campaign effectiveness</li>
+                                    <li>Feature selection</li>
+                                </ul>
+                            </td>
+                            <td>
+                                Training: O(k * n * m * log(m))<br>
+                                Prediction: O(k * log(m))
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Support Vector Machines</td>
+                            <td>
+                                <ul class="pros">
+                                    <li>Effective in high-dimensional spaces</li>
+                                    <li>Memory efficient</li>
+                                    <li>Versatile through different kernels</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="cons">
+                                    <li>Not suitable for large datasets</li>
+                                    <li>Sensitive to hyperparameter choices</li>
+                                    <li>Difficult to interpret</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>Text classification</li>
+                                    <li>Image recognition</li>
+                                    <li>Gene classification</li>
+                                </ul>
+                            </td>
+                            <td>
+                                Training: O(n²) to O(n³)<br>
+                                Prediction: O(n_sv)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Neural Networks</td>
+                            <td>
+                                <ul class="pros">
+                                    <li>Can model complex non-linear relationships</li>
+                                    <li>Adaptable to various types of data</li>
+                                    <li>Capable of feature learning</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="cons">
+                                    <li>Requires large amounts of data</li>
+                                    <li>Computationally expensive</li>
+                                    <li>Black-box nature limits interpretability</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>Image and speech recognition</li>
+                                    <li>Natural language processing</li>
+                                    <li>Complex pattern recognition</li>
+                                </ul>
+                            </td>
+                            <td>
+                                Training: O(n * m * e * h)<br>
+                                Prediction: O(m * h)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>KNN</td>
+                            <td>
+                                <ul class="pros">
+                                    <li>Simple implementation</li>
+                                    <li>No training phase</li>
+                                    <li>Naturally handles multi-class cases</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="cons">
+                                    <li>Computationally expensive prediction</li>
+                                    <li>Sensitive to irrelevant features</li>
+                                    <li>Requires feature scaling</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>Recommendation systems</li>
+                                    <li>Anomaly detection</li>
+                                    <li>Simple classification tasks</li>
+                                </ul>
+                            </td>
+                            <td>
+                                Training: O(1)<br>
+                                Prediction: O(n * m)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Naive Bayes</td>
+                            <td>
+                                <ul class="pros">
+                                    <li>Fast training and prediction</li>
+                                    <li>Works well with small datasets</li>
+                                    <li>Handles high-dimensional data</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="cons">
+                                    <li>Assumes feature independence</li>
+                                    <li>Limited by "zero frequency" problem</li>
+                                    <li>Not ideal for numeric predictions</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>Text classification</li>
+                                    <li>Spam filtering</li>
+                                    <li>Sentiment analysis</li>
+                                </ul>
+                            </td>
+                            <td>
+                                Training: O(n * m)<br>
+                                Prediction: O(m)
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <h3>Unsupervised Learning Algorithms</h3>
+            <div class="table-responsive">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Algorithm</th>
+                            <th>Strengths</th>
+                            <th>Weaknesses</th>
+                            <th>Best Use Cases</th>
+                            <th>Complexity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>K-Means Clustering</td>
+                            <td>
+                                <ul class="pros">
+                                    <li>Simple and intuitive</li>
+                                    <li>Scales to large datasets</li>
+                                    <li>Guarantees convergence</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="cons">
+                                    <li>Requires number of clusters (k) beforehand</li>
+                                    <li>Sensitive to initial centroids</li>
+                                    <li>Works best with spherical clusters</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>Customer segmentation</li>
+                                    <li>Image compression</li>
+                                    <li>Document clustering</li>
+                                </ul>
+                            </td>
+                            <td>
+                                O(n * k * d * i)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Hierarchical Clustering</td>
+                            <td>
+                                <ul class="pros">
+                                    <li>No need to specify number of clusters</li>
+                                    <li>Provides tree-like dendrogram</li>
+                                    <li>Flexible distance metrics</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="cons">
+                                    <li>Computationally intensive</li>
+                                    <li>Sensitive to noise and outliers</li>
+                                    <li>Cannot handle large datasets well</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>Biological taxonomy</li>
+                                    <li>Social network analysis</li>
+                                    <li>Document organization</li>
+                                </ul>
+                            </td>
+                            <td>
+                                O(n²) to O(n³)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>PCA</td>
+                            <td>
+                                <ul class="pros">
+                                    <li>Reduces dimensionality</li>
+                                    <li>Handles correlated features</li>
+                                    <li>Minimizes information loss</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="cons">
+                                    <li>Limited to linear transformations</li>
+                                    <li>Sensitive to feature scaling</li>
+                                    <li>Principal components may lack interpretability</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>Feature extraction</li>
+                                    <li>Visualization of high-dimensional data</li>
+                                    <li>Noise reduction</li>
+                                </ul>
+                            </td>
+                            <td>
+                                O(min(n * d², d³))
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Gaussian Mixture Models</td>
+                            <td>
+                                <ul class="pros">
+                                    <li>Soft clustering with probabilities</li>
+                                    <li>Can model clusters of different shapes</li>
+                                    <li>More flexible than K-means</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="cons">
+                                    <li>Sensitive to initialization</li>
+                                    <li>May converge to local optima</li>
+                                    <li>Computationally intensive</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>Computer vision</li>
+                                    <li>Anomaly detection</li>
+                                    <li>Speech recognition</li>
+                                </ul>
+                            </td>
+                            <td>
+                                O(n * k * d² * i)
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <h3>Reinforcement Learning Algorithms</h3>
+            <div class="table-responsive">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Algorithm</th>
+                            <th>Strengths</th>
+                            <th>Weaknesses</th>
+                            <th>Best Use Cases</th>
+                            <th>Complexity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Q-Learning</td>
+                            <td>
+                                <ul class="pros">
+                                    <li>Model-free (learns from experience)</li>
+                                    <li>Convergence guarantees</li>
+                                    <li>Simple implementation</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="cons">
+                                    <li>Struggles with large state spaces</li>
+                                    <li>Curse of dimensionality</li>
+                                    <li>Requires complete environment exploration</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>Game playing</li>
+                                    <li>Robot navigation</li>
+                                    <li>Resource management</li>
+                                </ul>
+                            </td>
+                            <td>
+                                O(|S|² * |A|)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Deep Q-Network (DQN)</td>
+                            <td>
+                                <ul class="pros">
+                                    <li>Handles high-dimensional state spaces</li>
+                                    <li>Experience replay for stability</li>
+                                    <li>End-to-end learning</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="cons">
+                                    <li>Computationally intensive</li>
+                                    <li>Requires large amounts of data</li>
+                                    <li>Hyperparameter sensitivity</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>Atari games</li>
+                                    <li>Complex control tasks</li>
+                                    <li>Autonomous systems</li>
+                                </ul>
+                            </td>
+                            <td>
+                                Varies with network size and problem
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Policy Gradient Methods</td>
+                            <td>
+                                <ul class="pros">
+                                    <li>Works with continuous action spaces</li>
+                                    <li>Directly optimizes policy</li>
+                                    <li>Can learn stochastic policies</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="cons">
+                                    <li>High variance in gradient estimates</li>
+                                    <li>Prone to converge to local optima</li>
+                                    <li>Sample inefficient</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>Robotics control</li>
+                                    <li>Continuous control tasks</li>
+                                    <li>Natural language generation</li>
+                                </ul>
+                            </td>
+                            <td>
+                                Varies with policy representation
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <p class="note">
+                <strong>Note:</strong> In complexity expressions, n = number of samples, m = number of features, k = number of clusters or trees, 
+                d = dimensions, i = iterations, |S| = size of state space, |A| = size of action space, h = hidden layer size, e = epochs.
+            </p>
+        </div>
+        
+        <div id="evaluation-metrics" class="tab-content">
+            <h2>Evaluation Metrics</h2>
+            <p>Choosing the right evaluation metric is crucial for properly assessing your model's performance. Here are common metrics used for different types of machine learning tasks.</p>
+            
+            <div class="category-section">
+                <h3>Classification Metrics</h3>
+                
+                <div class="metrics-card">
+                    <h3>Accuracy</h3>
+                    <p>The proportion of correct predictions among the total number of predictions made.</p>
+                    <div class="formula">Accuracy = (TP + TN) / (TP + TN + FP + FN)</div>
+                    <p><strong>When to use:</strong> When classes are balanced and all types of errors are equally important.</p>
+                    <p><strong>Limitations:</strong> Misleading for imbalanced classes. A model predicting the majority class for all instances can have high accuracy.</p>
+                </div>
+                
+                <div class="metrics-card">
+                    <h3>Precision</h3>
+                    <p>The proportion of true positive predictions among all positive predictions.</p>
+                    <div class="formula">Precision = TP / (TP + FP)</div>
+                    <p><strong>When to use:</strong> When false positives are more costly than false negatives (e.g., spam detection).</p>
+                    <p><strong>Limitations:</strong> Doesn't account for false negatives.</p>
+                </div>
+                
+                <div class="metrics-card">
+                    <h3>Recall (Sensitivity)</h3>
+                    <p>The proportion of true positive predictions among all actual positives.</p>
+                    <div class="formula">Recall = TP / (TP + FN)</div>
+                    <p><strong>When to use:</strong> When false negatives are more costly than false positives (e.g., disease detection).</p>
+                    <p><strong>Limitations:</strong> Doesn't account for false positives.</p>
+                </div>
+                
+                <div class="metrics-card">
+                    <h3>F1 Score</h3>
+                    <p>The harmonic mean of precision and recall, providing a balance between the two metrics.</p>
+                    <div class="formula">F1 = 2 * (Precision * Recall) / (Precision + Recall)</div>
+                    <p><strong>When to use:</strong> When you need a balance between precision and recall, especially with imbalanced classes.</p>
+                    <p><strong>Limitations:</strong> May not be appropriate when precision and recall have different importance.</p>
+                </div>
+                
+                <div class="metrics-card">
+                    <h3>ROC-AUC</h3>
+                    <p>The area under the Receiver Operating Characteristic curve, which plots true positive rate against false positive rate at various thresholds.</p>
+                    <div class="formula">AUC = Area under the ROC curve</div>
+                    <p><strong>When to use:</strong> When you need to evaluate the model's discrimination ability across different thresholds.</p>
+                    <p><strong>Limitations:</strong> Less informative for highly imbalanced datasets.</p>
+                </div>
+                
+                <div class="metrics-card">
+                    <h3>Confusion Matrix</h3>
+                    <p>A table layout that visualizes the performance of a classification algorithm.</p>
+                    <table style="width: 50%; margin: 15px auto; border-collapse: collapse; text-align: center;">
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 8px;"></td>
+                            <td style="border: 1px solid #ddd; padding: 8px; font-weight: bold;">Predicted Positive</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; font-weight: bold;">Predicted Negative</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 8px; font-weight: bold;">Actual Positive</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; background-color: rgba(106, 17, 203, 0.2);">True Positive (TP)</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; background-color: rgba(231, 76, 60, 0.2);">False Negative (FN)</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 8px; font-weight: bold;">Actual Negative</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; background-color: rgba(231, 76, 60, 0.2);">False Positive (FP)</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; background-color: rgba(106, 17, 203, 0.2);">True Negative (TN)</td>
+                        </tr>
+                    </table>
+                    <p><strong>When to use:</strong> For detailed analysis of model performance, especially to understand the types of errors being made.</p>
+                    <p><strong>Limitations:</strong> Requires interpretation, not a single-value metric.</p>
+                </div>
+            </div>
+            
+            <div class="category-section">
+                <h3>Regression Metrics</h3>
+                
+                <div class="metrics-card">
+                    <h3>Mean Absolute Error (MAE)</h3>
+                    <p>The average of the absolute differences between predictions and actual values.</p>
+                    <div class="formula">MAE = (1/n) * Σ|y<sub>i</sub> - ŷ<sub>i</sub>|</div>
+                    <p><strong>When to use:</strong> When you want to treat all errors equally regardless of their direction.</p>
+                    <p><strong>Limitations:</strong> Doesn't heavily penalize large errors compared to small ones.</p>
+                </div>
+                
+                <div class="metrics-card">
+                    <h3>Mean Squared Error (MSE)</h3>
+                    <p>The average of the squared differences between predictions and actual values.</p>
+                    <div class="formula">MSE = (1/n) * Σ(y<sub>i</sub> - ŷ<sub>i</sub>)²</div>
+                    <p><strong>When to use:</strong> When larger errors should be penalized more than smaller ones.</p>
+                    <p><strong>Limitations:</strong> Not in the same unit as the original data, which makes interpretation difficult.</p>
+                </div>
+                
+                <div class="metrics-card">
+                    <h3>Root Mean Squared Error (RMSE)</h3>
+                    <p>The square root of the MSE, bringing the error metric back to the original data's scale.</p>
+                    <div class="formula">RMSE = √[(1/n) * Σ(y<sub>i</sub> - ŷ<sub>i</sub>)²]</div>
+                    <p><strong>When to use:</strong> When you want to penalize large errors more while keeping the metric in the original data's scale.</p>
+                    <p><strong>Limitations:</strong> More sensitive to outliers than MAE.</p>
+                </div>
+                
+                <div class="metrics-card">
+                    <h3>R-squared (R²)</h3>
+                    <p>The proportion of variance in the dependent variable that is predictable from the independent variables.</p>
+                    <div class="formula">R² = 1 - (SS<sub>residual</sub> / SS<sub>total</sub>)</div>
+                    <p><strong>When to use:</strong> When you want a normalized measure of how well your model fits the data.</p>
+                    <p><strong>Limitations:</strong> Always increases with more features; can be negative; doesn't indicate bias.</p>
+                </div>
+                
+                <div class="metrics-card">
+                    <h3>Adjusted R-squared</h3>
+                    <p>A modified version of R-squared that adjusts for the number of predictors in the model.</p>
+                    <div class="formula">Adj. R² = 1 - [(1 - R²) * (n - 1) / (n - p - 1)]</div>
+                    <p><strong>When to use:</strong> When comparing models with different numbers of features.</p>
+                    <p><strong>Limitations:</strong> Can still increase with irrelevant features if they have even a small correlation with the target.</p>
+                </div>
+            </div>
+            
+            <div class="category-section">
+                <h3>Clustering Metrics</h3>
+                
+                <div class="metrics-card">
+                    <h3>Silhouette Coefficient</h3>
+                    <p>Measures how similar an object is to its own cluster compared to other clusters.</p>
+                    <div class="formula">s(i) = (b(i) - a(i)) / max(a(i), b(i))</div>
+                    <p>Where a(i) is the average distance to points in the same cluster and b(i) is the average distance to points in the nearest different cluster.</p>
+                    <p><strong>When to use:</strong> To evaluate the separation between clusters and cohesion within clusters.</p>
+                    <p><strong>Limitations:</strong> Computationally expensive for large datasets.</p>
+                </div>
+                
+                <div class="metrics-card">
+                    <h3>Davies-Bouldin Index</h3>
+                    <p>The average similarity between each cluster and its most similar cluster, where similarity is the ratio of within-cluster distances to between-cluster distances.</p>
+                    <p><strong>When to use:</strong> When you want to minimize within-cluster distances while maximizing between-cluster distances.</p>
+                    <p><strong>Limitations:</strong> Does not work well with non-globular clusters.</p>
+                </div>
+                
+                <div class="metrics-card">
+                    <h3>Calinski-Harabasz Index</h3>
+                    <p>Ratio of the between-cluster variance to the within-cluster variance.</p>
+                    <p><strong>When to use:</strong> When evaluating dense, well-separated clusters.</p>
+                    <p><strong>Limitations:</strong> Assumes convex clusters; sensitive to outliers.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div id="best-practices" class="tab-content">
+            <h2>Machine Learning Best Practices</h2>
+            <p>Follow these guidelines to build effective and reliable machine learning models.</p>
+            
+            <div class="metrics-card">
+                <h3>Data Preparation</h3>
+                <ul>
+                    <li><strong>Split data properly:</strong> Training (70-80%), validation (10-15%), testing (10-15%)</li>
+                    <li><strong>Handle missing values:</strong> Consider the mechanism of missingness (MCAR, MAR, MNAR)</li>
+                    <li><strong>Scale features:</strong> Standardization (z-score) or Normalization (min-max scaling)</li>
+                    <li><strong>Balance classes:</strong> Use oversampling, undersampling, or synthetic data generation (SMOTE)</li>
+                    <li><strong>Check for data leakage:</strong> Ensure validation and test sets are truly independent</li>
+                </ul>
+            </div>
+            
+            <div class="metrics-card">
+                <h3>Feature Engineering</h3>
+                <ul>
+                    <li><strong>Feature selection:</strong> Filter methods, wrapper methods, embedded methods</li>
+                    <li><strong>Feature transformation:</strong> PCA, LDA, polynomial features</li>
+                    <li><strong>Encoding categorical variables:</strong> One-hot, label, target, frequency encoding</li>
+                    <li><strong>Handle skewed features:</strong> Log transformation, Box-Cox transformation</li>
+                    <li><strong>Create domain-specific features:</strong> Use subject matter expertise</li>
+                </ul>
+            </div>
+            
+            <div class="metrics-card">
+                <h3>Model Selection and Training</h3>
+                <ul>
+                    <li><strong>Start simple:</strong> Begin with baseline models before complex ones</li>
+                    <li><strong>Cross-validation:</strong> Use k-fold CV (typically k=5 or k=10) for reliable performance estimation</li>
+                    <li><strong>Hyperparameter tuning:</strong> Grid search, random search, Bayesian optimization</li>
+                    <li><strong>Ensemble methods:</strong> Combine multiple models for better performance</li>
+                    <li><strong>Regularization:</strong> L1 (Lasso), L2 (Ridge), Elastic Net for controlling overfitting</li>
+                </ul>
+            </div>
+            
+            <div class="metrics-card">
+                <h3>Model Evaluation</h3>
+                <ul>
+                    <li><strong>Choose appropriate metrics:</strong> Align with business objectives</li>
+                    <li><strong>Evaluate on test set only once:</strong> Avoid overfitting to the test set</li>
+                    <li><strong>Analyze errors:</strong> Understand where and why the model fails</li>
+                    <li><strong>Check for bias:</strong> Ensure the model performs fairly across different groups</li>
+                    <li><strong>Consider computational costs:</strong> Balance performance with inference time and resource usage</li>
+                </ul>
+            </div>
+            
+            <div class="metrics-card">
+                <h3>Deployment and Monitoring</h3>
+                <ul>
+                    <li><strong>Version control:</strong> Track model versions, data, and code</li>
+                    <li><strong>Monitor model performance:</strong> Track metrics over time to detect degradation</li>
+                    <li><strong>Check for data drift:</strong> Ensure input distribution doesn't change significantly</li>
+                    <li><strong>Create interpretability reports:</strong> Explain model decisions using SHAP, LIME, etc.</li>
+                    <li><strong>Plan for updates:</strong> Establish a process for retraining and deploying new models</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+             <h4>&copy; 2025 Machine Learning Hub | Created by Prof. Rupali Mahajan</h4>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script>
+        function openTab(tabName) {
+            // Hide all tab content
+            var tabContents = document.getElementsByClassName("tab-content");
+            for (var i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove("active");
+            }
+            
+            // Deactivate all tab links
+            var tabLinks = document.getElementsByClassName("tab-link");
+            for (var i = 0; i < tabLinks.length; i++) {
+                tabLinks[i].classList.remove("active");
+            }
+            
+            // Show the selected tab content and activate the tab link
+            document.getElementById(tabName).classList.add("active");
+            
+            // Find and activate the correct tab link
+            var tabs = document.getElementsByClassName("tab-link");
+            for (var i = 0; i < tabs.length; i++) {
+                if (tabs[i].getAttribute("onclick").includes(tabName)) {
+                    tabs[i].classList.add("active");
+                }
+            }
+        }
+    </script>
+</body>
+</html>

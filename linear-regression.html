@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linear Regression | Machine Learning Hub</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="topic-header">
+        <div class="container">
+            <a href="index.html" class="back-button"><i class="fas fa-arrow-left"></i> Back to Home</a>
+            <h1>Linear Regression</h1>
+            <p>The foundation of predictive modeling</p>
+        </div>
+    </header>
+
+    <section class="container">
+        <div class="topic-container">
+            <div class="topic-description">
+                <h2>What is Linear Regression?</h2>
+                <p>Linear regression is a basic and commonly used type of predictive analysis. It is one of the simplest algorithms in machine learning and serves as a good starting point for understanding more complex methods.</p>
+                
+                <p>The overall idea of regression is to examine two things:</p>
+                <ol>
+                    <li>Does a set of predictor variables do a good job in predicting an outcome (dependent) variable?</li>
+                    <li>Which variables in particular are significant predictors of the outcome variable, and in what way do they impact the outcome variable?</li>
+                </ol>
+                
+                <p>Mathematically, linear regression can be represented as:</p>
+                <div style="background-color: #f5f5f5; padding: 10px; border-radius: 5px; margin: 10px 0;">
+                    <p style="font-family: monospace; font-size: 16px; text-align: center;">
+                        y = β₀ + β₁x₁ + β₂x₂ + ... + βₙxₙ + ε
+                    </p>
+                </div>
+                
+                <p>Where:</p>
+                <ul>
+                    <li>y is the dependent variable</li>
+                    <li>x₁, x₂, ..., xₙ are the independent variables</li>
+                    <li>β₀, β₁, β₂, ..., βₙ are the coefficients that the algorithm learns</li>
+                    <li>ε is the error term</li>
+                </ul>
+                
+                <h3>Applications:</h3>
+                <ul>
+                    <li>Sales forecasting</li>
+                    <li>Risk assessment</li>
+                    <li>Real estate price prediction</li>
+                    <li>Trend analysis</li>
+                </ul>
+            </div>
+            
+            <div class="topic-video">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/zPG4NjIkCjc" title="Linear Regression Explained" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                
+                <div class="diagram-container">
+                    <svg viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Linear Regression Visualization -->
+                        
+                        <!-- Coordinate System -->
+                        <line x1="50" y1="350" x2="450" y2="350" stroke="#333" stroke-width="2"/>
+                        <line x1="50" y1="50" x2="50" y2="350" stroke="#333" stroke-width="2"/>
+                        
+                        <!-- Axis Labels -->
+                        <text x="250" y="380" text-anchor="middle" fill="#333" font-size="14">X (Input Feature)</text>
+                        <text x="20" y="200" text-anchor="middle" fill="#333" font-size="14" transform="rotate(-90, 20, 200)">Y (Target)</text>
+                        
+                        <!-- Data Points -->
+                        <circle cx="100" cy="300" r="5" fill="#6a11cb"/>
+                        <circle cx="150" cy="250" r="5" fill="#6a11cb"/>
+                        <circle cx="200" cy="220" r="5" fill="#6a11cb"/>
+                        <circle cx="250" cy="180" r="5" fill="#6a11cb"/>
+                        <circle cx="300" cy="150" r="5" fill="#6a11cb"/>
+                        <circle cx="350" cy="120" r="5" fill="#6a11cb"/>
+                        <circle cx="400" cy="100" r="5" fill="#6a11cb"/>
+                        
+                        <!-- Regression Line -->
+                        <line x1="80" y1="310" x2="420" y2="90" stroke="#2575fc" stroke-width="3"/>
+                        
+                        <!-- Error Lines -->
+                        <line x1="100" y1="300" x2="100" y2="290" stroke="#ff9a8b" stroke-width="2" stroke-dasharray="4"/>
+                        <line x1="150" y1="250" x2="150" y2="260" stroke="#ff9a8b" stroke-width="2" stroke-dasharray="4"/>
+                        <line x1="200" y1="220" x2="200" y2="230" stroke="#ff9a8b" stroke-width="2" stroke-dasharray="4"/>
+                        <line x1="250" y1="180" x2="250" y2="190" stroke="#ff9a8b" stroke-width="2" stroke-dasharray="4"/>
+                        <line x1="300" y1="150" x2="300" y2="160" stroke="#ff9a8b" stroke-width="2" stroke-dasharray="4"/>
+                        <line x1="350" y1="120" x2="350" y2="130" stroke="#ff9a8b" stroke-width="2" stroke-dasharray="4"/>
+                        <line x1="400" y1="100" x2="400" y2="110" stroke="#ff9a8b" stroke-width="2" stroke-dasharray="4"/>
+                        
+                        <!-- Legend -->
+                        <circle cx="100" cy="50" r="5" fill="#6a11cb"/>
+                        <text x="120" y="55" fill="#333" font-size="14">Data Points</text>
+                        
+                        <line x1="200" y1="50" x2="260" y2="50" stroke="#2575fc" stroke-width="3"/>
+                        <text x="270" y="55" fill="#333" font-size="14">Regression Line</text>
+                        
+                        <line x1="350" y1="50" x2="380" y2="50" stroke="#ff9a8b" stroke-width="2" stroke-dasharray="4"/>
+                        <text x="390" y="55" fill="#333" font-size="14">Error</text>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+             <h4>&copy; 2025 Machine Learning Hub | Created by Prof. Rupali Mahajan</h4>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>

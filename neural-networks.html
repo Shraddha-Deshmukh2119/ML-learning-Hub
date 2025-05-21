@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neural Networks | Machine Learning Hub</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="topic-header">
+        <div class="container">
+            <a href="index.html" class="back-button"><i class="fas fa-arrow-left"></i> Back to Home</a>
+            <h1>Neural Networks</h1>
+            <p>Computing systems inspired by the human brain</p>
+        </div>
+    </header>
+
+    <section class="container">
+        <div class="topic-container">
+            <div class="topic-description">
+                <h2>What are Neural Networks?</h2>
+                <p>Neural Networks are computational models inspired by the structure and function of biological neural networks in animal brains. They consist of artificial neurons (nodes) connected together to form a network capable of learning complex patterns.</p>
+                
+                <p>A neural network typically consists of:</p>
+                <ul>
+                    <li><strong>Input Layer:</strong> Receives the initial data (features)</li>
+                    <li><strong>Hidden Layers:</strong> Intermediate layers where most computation happens</li>
+                    <li><strong>Output Layer:</strong> Produces the final prediction or classification</li>
+                </ul>
+                
+                <p>Each connection between neurons has a weight, which adjusts as the network learns. The learning process involves:</p>
+                <ol>
+                    <li>Forward propagation - inputs are passed through the network</li>
+                    <li>Calculating loss - comparing output with expected result</li>
+                    <li>Backpropagation - adjusting weights to minimize loss</li>
+                </ol>
+                
+                <h3>Types of Neural Networks:</h3>
+                <ul>
+                    <li>Feedforward Neural Networks</li>
+                    <li>Convolutional Neural Networks (CNNs)</li>
+                    <li>Recurrent Neural Networks (RNNs)</li>
+                    <li>Long Short-Term Memory Networks (LSTMs)</li>
+                    <li>Generative Adversarial Networks (GANs)</li>
+                    <li>Transformers</li>
+                </ul>
+                
+                <h3>Applications:</h3>
+                <ul>
+                    <li>Image and video recognition</li>
+                    <li>Natural language processing</li>
+                    <li>Speech recognition</li>
+                    <li>Medical diagnosis</li>
+                    <li>Game playing (e.g., AlphaGo)</li>
+                    <li>Autonomous vehicles</li>
+                </ul>
+            </div>
+            
+            <div class="topic-video">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/aircAruvnKk" title="Neural Networks Explained" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                
+                <div class="diagram-container">
+                    <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Neural Network Visualization -->
+                        
+                        <!-- Input Layer -->
+                        <circle cx="100" cy="100" r="20" fill="#6a11cb"/>
+                        <circle cx="100" cy="200" r="20" fill="#6a11cb"/>
+                        <circle cx="100" cy="300" r="20" fill="#6a11cb"/>
+                        <text x="50" y="200" text-anchor="middle" fill="#333" font-size="14" font-weight="bold">Input Layer</text>
+                        
+                        <!-- Hidden Layer 1 -->
+                        <circle cx="250" cy="80" r="20" fill="#2575fc"/>
+                        <circle cx="250" cy="160" r="20" fill="#2575fc"/>
+                        <circle cx="250" cy="240" r="20" fill="#2575fc"/>
+                        <circle cx="250" cy="320" r="20" fill="#2575fc"/>
+                        <text x="250" y="380" text-anchor="middle" fill="#333" font-size="14" font-weight="bold">Hidden Layer</text>
+                        
+                        <!-- Hidden Layer 2 -->
+                        <circle cx="400" cy="100" r="20" fill="#2575fc"/>
+                        <circle cx="400" cy="200" r="20" fill="#2575fc"/>
+                        <circle cx="400" cy="300" r="20" fill="#2575fc"/>
+                        
+                        <!-- Output Layer -->
+                        <circle cx="550" cy="150" r="20" fill="#ff9a8b"/>
+                        <circle cx="550" cy="250" r="20" fill="#ff9a8b"/>
+                        <text x="600" y="200" text-anchor="middle" fill="#333" font-size="14" font-weight="bold">Output Layer</text>
+                        
+                        <!-- Connections from Input to Hidden 1 -->
+                        <line x1="120" y1="100" x2="230" y2="80" stroke="#333" stroke-width="1.5" opacity="0.6"/>
+                        <line x1="120" y1="100" x2="230" y2="160" stroke="#333" stroke-width="1.5" opacity="0.6"/>
+                        <line x1="120" y1="100" x2="230" y2="240" stroke="#333" stroke-width="1.5" opacity="0.6"/>
+                        <line x1="120" y1="100" x2="230" y2="320" stroke="#333" stroke-width="1.5" opacity="0.6"/>
+                        
+                        <line x1="120" y1="200" x2="230" y2="80" stroke="#333" stroke-width="1.5" opacity="0.6"/>
+                        <line x1="120" y1="200" x2="230" y2="160" stroke="#333" stroke-width="1.5" opacity="0.6"/>
+                        <line x1="120" y1="200" x2="230" y2="240" stroke="#333" stroke-width="1.5" opacity="0.6"/>
+                        <line x1="120" y1="200" x2="230" y2="320" stroke="#333" stroke-width="1.5" opacity="0.6"/>
+                        
+                        <line x1="120" y1="300" x2="230" y2="80" stroke="#333" stroke-width="1.5" opacity="0.6"/>
+                        <line x1="120" y1="300" x2="230" y2="160" stroke="#333" stroke-width="1.5" opacity="0.6"/>
+                        <line x1="120" y1="300" x2="230" y2="240" stroke="#333" stroke-width="1.5" opacity="0.6"/>
+                        <line x1="120" y1="300" x2="230" y2="320" stroke="#333" stroke-width="1.5" opacity="0.6"/>
+                        
+                        <!-- Connections from Hidden 1 to Hidden 2 -->
+                        <line x1="270" y1="80" x2="380" y2="100" stroke="#333" stroke-width="1.5" opacity="0.6"/>
+                        <line x1="270" y1="80" x2="380" y2="200" stroke="#333" stroke-width="1.5" opacity="0.6"/>
+                        <line x1="270" y1="80" x2="380" y2="300" stroke="#333" stroke-width="1.5" opacity="0.6"/>
+                        
+                        <line x1="270" y1="160" x2="380" y2="100" stroke="#333" stroke-width="1.5" opacity="0.6"/>
+                        <line x1="270" y1="160" x2="380" y2="200" stroke="#333" stroke-width="1.5" opacity="0.6"/>
+                        <line x1="270" y1="160" x2="380" y2="300" stroke="#333" stroke-width="1.5" opacity="0.6"/>
+                        
+                        <line x1="270" y1="240" x2="380" y2="100" stroke="#333" stroke-width="1.5" opacity="0.6"/>
+                        <line x1="270" y1="240" x2="380" y2="200" stroke="#333" stroke-width="1.5" opacity="0.6"/>
+                        <line x1="270" y1="240" x2="380" y2="300" stroke="#333" stroke-width="1.5" opacity="0.6"/>
+                        
+                        <line x1="270" y1="320" x2="380" y2="100" stroke="#333" stroke-width="1.5" opacity="0.6"/>
+                        <line x1="270" y1="320" x2="380" y2="200" stroke="#333" stroke-width="1.5" opacity="0.6"/>
+                        <line x1="270" y1="320" x2="380" y2="300" stroke="#333" stroke-width="1.5" opacity="0.6"/>
+                        
+                        <!-- Connections from Hidden 2 to Output -->
+                        <line x1="420" y1="100" x2="530" y2="150" stroke="#333" stroke-width="1.5" opacity="0.6"/>
+                        <line x1="420" y1="100" x2="530" y2="250" stroke="#333" stroke-width="1.5" opacity="0.6"/>
+                        
+                        <line x1="420" y1="200" x2="530" y2="150" stroke="#333" stroke-width="1.5" opacity="0.6"/>
+                        <line x1="420" y1="200" x2="530" y2="250" stroke="#333" stroke-width="1.5" opacity="0.6"/>
+                        
+                        <line x1="420" y1="300" x2="530" y2="150" stroke="#333" stroke-width="1.5" opacity="0.6"/>
+                        <line x1="420" y1="300" x2="530" y2="250" stroke="#333" stroke-width="1.5" opacity="0.6"/>
+                        
+                        <!-- Node Labels -->
+                        <text x="100" y="105" text-anchor="middle" fill="white" font-size="12">X₁</text>
+                        <text x="100" y="205" text-anchor="middle" fill="white" font-size="12">X₂</text>
+                        <text x="100" y="305" text-anchor="middle" fill="white" font-size="12">X₃</text>
+                        
+                        <text x="550" y="155" text-anchor="middle" fill="white" font-size="12">Y₁</text>
+                        <text x="550" y="255" text-anchor="middle" fill="white" font-size="12">Y₂</text>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <h4>&copy; 2025 Machine Learning Hub | Created by Prof. Rupali Mahajan</h4>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>

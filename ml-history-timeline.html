@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ML History Timeline | Machine Learning Hub</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            border-radius: 3px;
+        }
+        
+        .timeline-container {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+            margin-bottom: 30px;
+        }
+        
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -12px;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            border: 4px solid #fff;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .left {
+            left: 0;
+        }
+        
+        .right {
+            left: 50%;
+        }
+        
+        .left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 18px;
+            width: 0;
+            z-index: 1;
+            right: 30px;
+            border: medium solid #f5f5f5;
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent #f5f5f5;
+        }
+        
+        .right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 18px;
+            width: 0;
+            z-index: 1;
+            left: 30px;
+            border: medium solid #f5f5f5;
+            border-width: 10px 10px 10px 0;
+            border-color: transparent #f5f5f5 transparent transparent;
+        }
+        
+        .right::after {
+            left: -8px;
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background-color: #f5f5f5;
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+        
+        .era-marker {
+            text-align: center;
+            margin: 30px 0;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .era-marker h3 {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            border-radius: 30px;
+            font-size: 18px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .timeline-year {
+            position: absolute;
+            top: 3px;
+            font-weight: bold;
+            color: white;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .left .timeline-year {
+            right: -20px;
+        }
+        
+        .right .timeline-year {
+            left: -20px;
+        }
+        
+        .timeline-content h3 {
+            margin-top: 0;
+            color: #333;
+            font-size: 18px;
+        }
+        
+        .timeline-content p {
+            margin-bottom: 10px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        .timeline-content .impact {
+            font-style: italic;
+            color: #555;
+            border-left: 3px solid #2575fc;
+            padding-left: 10px;
+            margin-top: 10px;
+        }
+        
+        .timeline-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin: 10px 0;
+            display: block;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            color: white;
+        }
+        
+        .badge.algorithm {
+            background-color: #6a11cb;
+        }
+        
+        .badge.concept {
+            background-color: #2575fc;
+        }
+        
+        .badge.hardware {
+            background-color: #49a09d;
+        }
+        
+        .badge.milestone {
+            background-color: #ff9a8b;
+        }
+        
+        @media screen and (max-width: 768px) {
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-container {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+                left: 0;
+            }
+            
+            .timeline-container::before {
+                left: 60px;
+                border-width: 10px 10px 10px 0;
+                border-color: transparent #f5f5f5 transparent transparent;
+            }
+            
+            .left::after, .right::after {
+                left: 22px;
+            }
+            
+            .left .timeline-year, .right .timeline-year {
+                left: -10px;
+            }
+            
+            .right {
+                left: 0;
+            }
+        }
+        
+        /* Skip to Era Navigation */
+        .era-nav {
+            background-color: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        
+        .era-nav a {
+            display: inline-block;
+            padding: 8px 15px;
+            margin: 5px;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            border-radius: 20px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+        
+        .era-nav a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    <header class="topic-header">
+        <div class="container">
+            <a href="index.html" class="back-button"><i class="fas fa-arrow-left"></i> Back to Home</a>
+            <h1>Machine Learning History Timeline</h1>
+            <p>The evolution of algorithms, concepts, and breakthroughs</p>
+        </div>
+    </header>
+
+    <section class="container">
+        <div class="era-nav">
+            <a href="#early-foundations">Early Foundations</a>
+            <a href="#birth-of-ai">Birth of AI</a>
+            <a href="#ai-winter">AI Winter</a>
+            <a href="#statistical-renaissance">Statistical Renaissance</a>
+            <a href="#deep-learning-revolution">Deep Learning Revolution</a>
+            <a href="#modern-era">Modern Era</a>
+        </div>
+        
+        <div class="timeline">
+            <div class="era-marker" id="early-foundations">
+                <h3>Early Foundations (1940s-1950s)</h3>
+            </div>
+            
+            <div class="timeline-container left">
+                <div class="timeline-year">1943</div>
+                <div class="timeline-content">
+                    <span class="badge concept">Concept</span>
+                    <h3>McCulloch-Pitts Neuron</h3>
+                    <p>Warren McCulloch and Walter Pitts created a computational model for neural networks. Their paper, "A Logical Calculus of the Ideas Immanent in Nervous Activity," described the first mathematical model of a neural network.</p>
+                    <p class="impact">Impact: Laid the theoretical foundation for artificial neural networks and computational neuroscience.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-container right">
+                <div class="timeline-year">1949</div>
+                <div class="timeline-content">
+                    <span class="badge concept">Concept</span>
+                    <h3>Hebbian Learning</h3>
+                    <p>Donald Hebb introduced the concept in his book "The Organization of Behavior," proposing that neural pathways are strengthened each time they are used - often summarized as "cells that fire together, wire together."</p>
+                    <p class="impact">Impact: Became the basis for unsupervised learning and inspired many learning algorithms.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-container left">
+                <div class="timeline-year">1950</div>
+                <div class="timeline-content">
+                    <span class="badge milestone">Milestone</span>
+                    <h3>Turing Test</h3>
+                    <p>Alan Turing published "Computing Machinery and Intelligence," introducing what became known as the Turing Test - a test of a machine's ability to exhibit intelligent behavior indistinguishable from a human.</p>
+                    <p class="impact">Impact: Established a philosophical framework for artificial intelligence and set a benchmark for machine intelligence.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-container right">
+                <div class="timeline-year">1951</div>
+                <div class="timeline-content">
+                    <span class="badge hardware">Hardware</span>
+                    <h3>First Neural Network Machine</h3>
+                    <p>Marvin Minsky and Dean Edmonds built the first neural network computer, called SNARC (Stochastic Neural Analog Reinforcement Calculator), which successfully modeled the behavior of rats finding their way through a maze.</p>
+                    <p class="impact">Impact: Demonstrated that machines could simulate neural processes.</p>
+                </div>
+            </div>
+            
+            <div class="era-marker" id="birth-of-ai">
+                <h3>Birth of AI (1956-1969)</h3>
+            </div>
+            
+            <div class="timeline-container left">
+                <div class="timeline-year">1956</div>
+                <div class="timeline-content">
+                    <span class="badge milestone">Milestone</span>
+                    <h3>Dartmouth Conference</h3>
+                    <p>The Dartmouth Summer Research Project on Artificial Intelligence was organized by John McCarthy, Marvin Minsky, Claude Shannon, and Nathaniel Rochester. The term "artificial intelligence" was coined here.</p>
+                    <p class="impact">Impact: Marked the official birth of AI as a field of research.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-container right">
+                <div class="timeline-year">1957</div>
+                <div class="timeline-content">
+                    <span class="badge algorithm">Algorithm</span>
+                    <h3>Perceptron</h3>
+                    <p>Frank Rosenblatt invented the perceptron algorithm while at the Cornell Aeronautical Laboratory. It was a type of neural network, the simplest form of a feedforward neural network.</p>
+                    <p class="impact">Impact: First machine learning algorithm that could learn skills through trial and error.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-container left">
+                <div class="timeline-year">1959</div>
+                <div class="timeline-content">
+                    <span class="badge algorithm">Algorithm</span>
+                    <h3>ADALINE</h3>
+                    <p>Bernard Widrow and Marcian Hoff developed ADALINE (Adaptive Linear Neuron), which was based on the McCulloch-Pitts neuron. It was trained using the delta rule.</p>
+                    <p class="impact">Impact: First practical adaptive filter with wide applications in signal processing.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-container right">
+                <div class="timeline-year">1965</div>
+                <div class="timeline-content">
+                    <span class="badge milestone">Milestone</span>
+                    <h3>Fuzzy Logic</h3>
+                    <p>Lotfi Zadeh introduced fuzzy set theory and fuzzy logic, which allowed for degrees of truth rather than simple binary true/false values.</p>
+                    <p class="impact">Impact: Provided a mathematical framework for handling uncertainty and imprecision.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-container left">
+                <div class="timeline-year">1969</div>
+                <div class="timeline-content">
+                    <span class="badge milestone">Milestone</span>
+                    <h3>Limitations of Perceptrons</h3>
+                    <p>Marvin Minsky and Seymour Papert published "Perceptrons," demonstrating the limitations of single-layer perceptrons, particularly their inability to process the exclusive-or (XOR) logical function.</p>
+                    <p class="impact">Impact: Led to reduced funding and interest in neural network research, contributing to the first "AI winter."</p>
+                </div>
+            </div>
+            
+            <div class="era-marker" id="ai-winter">
+                <h3>AI Winter & Early Revival (1970s-1980s)</h3>
+            </div>
+            
+            <div class="timeline-container right">
+                <div class="timeline-year">1970</div>
+                <div class="timeline-content">
+                    <span class="badge algorithm">Algorithm</span>
+                    <h3>Automatic Differentiation</h3>
+                    <p>Seppo Linnainmaa introduced the concept of reverse mode automatic differentiation, which later became the foundation for backpropagation in neural networks.</p>
+                    <p class="impact">Impact: Essential mathematical technique behind training modern neural networks.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-container left">
+                <div class="timeline-year">1975</div>
+                <div class="timeline-content">
+                    <span class="badge algorithm">Algorithm</span>
+                    <h3>Backpropagation</h3>
+                    <p>Paul Werbos described the process of training neural networks using backpropagation of errors in his PhD thesis.</p>
+                    <p class="impact">Impact: Overcame the limitations of perceptrons by allowing for the training of multi-layer networks.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-container right">
+                <div class="timeline-year">1979</div>
+                <div class="timeline-content">
+                    <span class="badge algorithm">Algorithm</span>
+                    <h3>Neocognitron</h3>
+                    <p>Kunihiko Fukushima developed the Neocognitron, a hierarchical multi-layered neural network capable of robust visual pattern recognition.</p>
+                    <p class="impact">Impact: Introduced the concept of convolutional neural networks (CNNs).</p>
+                </div>
+            </div>
+            
+            <div class="timeline-container left">
+                <div class="timeline-year">1982</div>
+                <div class="timeline-content">
+                    <span class="badge algorithm">Algorithm</span>
+                    <h3>Hopfield Network</h3>
+                    <p>John Hopfield introduced the Hopfield Network, a form of recurrent artificial neural network that can serve as content-addressable memory.</p>
+                    <p class="impact">Impact: Renewed interest in neural networks and set the foundation for modern recurrent networks.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-container right">
+                <div class="timeline-year">1986</div>
+                <div class="timeline-content">
+                    <span class="badge milestone">Milestone</span>
+                    <h3>Backpropagation Popularized</h3>
+                    <p>David Rumelhart, Geoffrey Hinton, and Ronald Williams published "Learning representations by back-propagating errors," which popularized the backpropagation algorithm for training neural networks.</p>
+                    <p class="impact">Impact: Sparked renewed interest in neural networks and led to many practical applications.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-container left">
+                <div class="timeline-year">1989</div>
+                <div class="timeline-content">
+                    <span class="badge algorithm">Algorithm</span>
+                    <h3>Q-Learning</h3>
+                    <p>Christopher Watkins developed Q-learning, a model-free reinforcement learning algorithm that can learn the value of an action in a particular state.</p>
+                    <p class="impact">Impact: Fundamental algorithm in reinforcement learning that influenced later developments.</p>
+                </div>
+            </div>
+            
+            <div class="era-marker" id="statistical-renaissance">
+                <h3>Statistical Renaissance (1990s-2000s)</h3>
+            </div>
+            
+            <div class="timeline-container right">
+                <div class="timeline-year">1990</div>
+                <div class="timeline-content">
+                    <span class="badge algorithm">Algorithm</span>
+                    <h3>TD-Gammon</h3>
+                    <p>Gerald Tesauro developed TD-Gammon, a neural network trained by temporal difference learning, which achieved master-level play in backgammon.</p>
+                    <p class="impact">Impact: Demonstrated the potential of reinforcement learning for complex tasks.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-container left">
+                <div class="timeline-year">1992</div>
+                <div class="timeline-content">
+                    <span class="badge algorithm">Algorithm</span>
+                    <h3>Support Vector Machines</h3>
+                    <p>Bernhard Boser, Isabelle Guyon, and Vladimir Vapnik introduced Support Vector Machines, a supervised learning method used for classification and regression.</p>
+                    <p class="impact">Impact: Became a standard tool in data science for its efficacy in high-dimensional spaces.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-container right">
+                <div class="timeline-year">1995</div>
+                <div class="timeline-content">
+                    <span class="badge algorithm">Algorithm</span>
+                    <h3>Random Forests</h3>
+                    <p>Tin Kam Ho published the first random decision forests algorithm. The method was later refined by Leo Breiman and Adele Cutler.</p>
+                    <p class="impact">Impact: One of the most powerful and widely used ensemble learning techniques.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-container left">
+                <div class="timeline-year">1997</div>
+                <div class="timeline-content">
+                    <span class="badge milestone">Milestone</span>
+                    <h3>Deep Blue Defeats Kasparov</h3>
+                    <p>IBM's Deep Blue became the first computer chess program to defeat a reigning world chess champion, Garry Kasparov, in a match.</p>
+                    <p class="impact">Impact: Landmark achievement demonstrating advanced computational capabilities.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-container right">
+                <div class="timeline-year">1997</div>
+                <div class="timeline-content">
+                    <span class="badge algorithm">Algorithm</span>
+                    <h3>LSTM</h3>
+                    <p>Sepp Hochreiter and Jürgen Schmidhuber introduced Long Short-Term Memory (LSTM) networks, a special kind of recurrent neural network capable of learning long-term dependencies.</p>
+                    <p class="impact">Impact: Revolutionized sequence modeling, enabling breakthroughs in machine translation, speech recognition, and more.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-container left">
+                <div class="timeline-year">2001</div>
+                <div class="timeline-content">
+                    <span class="badge milestone">Milestone</span>
+                    <h3>Statistical Machine Translation</h3>
+                    <p>Statistical approaches to machine translation began to overtake rule-based systems, led by work at IBM and the development of the IBM Models.</p>
+                    <p class="impact">Impact: Marked a paradigm shift in natural language processing toward data-driven approaches.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-container right">
+                <div class="timeline-year">2006</div>
+                <div class="timeline-content">
+                    <span class="badge milestone">Milestone</span>
+                    <h3>Deep Learning Renaissance</h3>
+                    <p>Geoffrey Hinton published "A fast learning algorithm for deep belief nets," which demonstrated effective training for deep neural networks using layer-by-layer pretraining.</p>
+                    <p class="impact">Impact: Sparked the revival of deep learning and set the stage for the deep learning revolution.</p>
+                </div>
+            </div>
+            
+            <div class="era-marker" id="deep-learning-revolution">
+                <h3>Deep Learning Revolution (2010-2017)</h3>
+            </div>
+            
+            <div class="timeline-container left">
+                <div class="timeline-year">2011</div>
+                <div class="timeline-content">
+                    <span class="badge hardware">Hardware</span>
+                    <h3>GPUs for Deep Learning</h3>
+                    <p>Andrew Ng and his team at Stanford demonstrated that GPUs could significantly speed up deep learning algorithms, making previously impractical networks feasible.</p>
+                    <p class="impact">Impact: Enabled the training of much larger and deeper networks, fueling the deep learning boom.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-container right">
+                <div class="timeline-year">2012</div>
+                <div class="timeline-content">
+                    <span class="badge milestone">Milestone</span>
+                    <h3>AlexNet</h3>
+                    <p>Alex Krizhevsky, Ilya Sutskever, and Geoffrey Hinton created a deep convolutional neural network that won the ImageNet competition by a significant margin, reducing the error rate from 26% to 15%.</p>
+                    <p class="impact">Impact: Demonstrated the superiority of deep learning for computer vision and catalyzed the deep learning revolution.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-container left">
+                <div class="timeline-year">2013</div>
+                <div class="timeline-content">
+                    <span class="badge algorithm">Algorithm</span>
+                    <h3>Word2Vec</h3>
+                    <p>Tomas Mikolov and colleagues at Google developed Word2Vec, a technique for learning word embeddings from text.</p>
+                    <p class="impact">Impact: Revolutionized natural language processing by enabling words to be represented as vectors capturing semantic relationships.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-container right">
+                <div class="timeline-year">2014</div>
+                <div class="timeline-content">
+                    <span class="badge milestone">Milestone</span>
+                    <h3>Generative Adversarial Networks</h3>
+                    <p>Ian Goodfellow and his colleagues introduced Generative Adversarial Networks (GANs), a class of ML systems where two neural networks contest with each other.</p>
+                    <p class="impact">Impact: Enabled the generation of highly realistic synthetic data and became a cornerstone of generative AI.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-container left">
+                <div class="timeline-year">2015</div>
+                <div class="timeline-content">
+                    <span class="badge algorithm">Algorithm</span>
+                    <h3>ResNet</h3>
+                    <p>Kaiming He and colleagues introduced Residual Networks (ResNet), which allowed for training of much deeper neural networks through the use of skip connections.</p>
+                    <p class="impact">Impact: Solved the vanishing gradient problem and enabled the training of networks with hundreds of layers.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-container right">
+                <div class="timeline-year">2016</div>
+                <div class="timeline-content">
+                    <span class="badge milestone">Milestone</span>
+                    <h3>AlphaGo Defeats Lee Sedol</h3>
+                    <p>Google DeepMind's AlphaGo defeated Lee Sedol, one of the world's top Go players, in a five-game match.</p>
+                    <p class="impact">Impact: Demonstrated that AI could master extremely complex strategic games, considered a grand challenge for AI.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-container left">
+                <div class="timeline-year">2017</div>
+                <div class="timeline-content">
+                    <span class="badge algorithm">Algorithm</span>
+                    <h3>Transformer Architecture</h3>
+                    <p>Vaswani et al. at Google introduced the Transformer architecture in the paper "Attention Is All You Need," which relied entirely on self-attention mechanisms without recurrence or convolution.</p>
+                    <p class="impact">Impact: Transformed NLP by enabling more efficient training and better capturing of long-range dependencies, setting the foundation for models like BERT and GPT.</p>
+                </div>
+            </div>
+            
+            <div class="era-marker" id="modern-era">
+                <h3>Modern Era (2018-Present)</h3>
+            </div>
+            
+            <div class="timeline-container right">
+                <div class="timeline-year">2018</div>
+                <div class="timeline-content">
+                    <span class="badge algorithm">Algorithm</span>
+                    <h3>BERT</h3>
+                    <p>Google introduced Bidirectional Encoder Representations from Transformers (BERT), a pre-trained language model based on the Transformer architecture.</p>
+                    <p class="impact">Impact: Set new state-of-the-art results on a wide range of NLP tasks and pioneered the transfer learning approach in NLP.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-container left">
+                <div class="timeline-year">2019</div>
+                <div class="timeline-content">
+                    <span class="badge algorithm">Algorithm</span>
+                    <h3>GPT-2</h3>
+                    <p>OpenAI released GPT-2 (Generative Pre-trained Transformer 2), a large language model capable of generating coherent and contextually relevant text.</p>
+                    <p class="impact">Impact: Demonstrated the ability of transformers to generate human-like text and raised awareness about potential misuse of AI technology.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-container right">
+                <div class="timeline-year">2020</div>
+                <div class="timeline-content">
+                    <span class="badge algorithm">Algorithm</span>
+                    <h3>GPT-3</h3>
+                    <p>OpenAI released GPT-3 with 175 billion parameters, demonstrating remarkable few-shot learning capabilities across a wide range of tasks.</p>
+                    <p class="impact">Impact: Showed that scale leads to emergent abilities and set off an era of massive language models.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-container left">
+                <div class="timeline-year">2021</div>
+                <div class="timeline-content">
+                    <span class="badge milestone">Milestone</span>
+                    <h3>AlphaFold 2</h3>
+                    <p>DeepMind released AlphaFold 2, which achieved unprecedented accuracy in predicting protein structures from amino acid sequences.</p>
+                    <p class="impact">Impact: Solved a 50-year grand challenge in biology and demonstrated AI's potential for scientific discovery.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-container right">
+                <div class="timeline-year">2022</div>
+                <div class="timeline-content">
+                    <span class="badge milestone">Milestone</span>
+                    <h3>Diffusion Models</h3>
+                    <p>Diffusion models like DALL-E 2, Midjourney, and Stable Diffusion emerged, capable of generating high-quality images from text descriptions.</p>
+                    <p class="impact">Impact: Democratized AI-generated art and opened new possibilities for creative applications of AI.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-container left">
+                <div class="timeline-year">2023</div>
+                <div class="timeline-content">
+                    <span class="badge milestone">Milestone</span>
+                    <h3>ChatGPT & LLMs</h3>
+                    <p>OpenAI's ChatGPT gained massive popularity, followed by a wave of large language models (LLMs) like GPT-4, Claude, and Llama that demonstrated sophisticated conversational abilities.</p>
+                    <p class="impact">Impact: Brought AI into mainstream consciousness and raised discussions about AI safety, ethics, and regulation.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-container right">
+                <div class="timeline-year">2024+</div>
+                <div class="timeline-content">
+                    <span class="badge concept">Future</span>
+                    <h3>The Future of ML</h3>
+                    <p>As machine learning continues to evolve, several trends are emerging:</p>
+                    <ul>
+                        <li>Multimodal AI systems that can process and generate across text, image, audio, and video</li>
+                        <li>AI for scientific discovery in fields like medicine, materials science, and climate science</li>
+                        <li>More efficient and smaller models that can run on edge devices</li>
+                        <li>Advancements in AI alignment and safety research</li>
+                        <li>Increased focus on explainable AI and ethical considerations</li>
+                    </ul>
+                    <p class="impact">Impact: The boundaries of what's possible with machine learning continue to expand, promising both exciting opportunities and important challenges for society.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Machine Learning Hub | Created by Prof. Rupali Mahajan</p>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script>
+        // Smooth scrolling for era navigation
+        document.querySelectorAll('.era-nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 100,
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Add animation effects to timeline items
+        function checkVisibility() {
+            const timelineContainers = document.querySelectorAll('.timeline-container');
+            
+            timelineContainers.forEach(container => {
+                const containerTop = container.getBoundingClientRect().top;
+                
+                if (containerTop < window.innerHeight - 100) {
+                    container.style.opacity = 1;
+                    container.style.transform = 'translateY(0)';
+                }
+            });
+        }
+        
+        // Initialize timeline containers with starting styles
+        document.addEventListener('DOMContentLoaded', function() {
+            const timelineContainers = document.querySelectorAll('.timeline-container');
+            
+            timelineContainers.forEach(container => {
+                container.style.opacity = 0;
+                container.style.transform = 'translateY(50px)';
+                container.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            });
+            
+            // Check visibility initially and on scroll
+            checkVisibility();
+            window.addEventListener('scroll', checkVisibility);
+        });
+    </script>
+</body>
+</html>

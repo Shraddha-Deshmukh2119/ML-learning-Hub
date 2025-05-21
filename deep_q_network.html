@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep Q-Network (DQN) | Machine Learning Hub</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="topic-header">
+        <div class="container">
+            <a href="index.html" class="back-button"><i class="fas fa-arrow-left"></i> Back to Home</a>
+            <h1>Deep Q-Network (DQN)</h1>
+            <p>Combining deep learning with reinforcement learning for complex environments</p>
+        </div>
+    </header>
+
+    <section class="container">
+        <div class="topic-container">
+            <div class="topic-description">
+                <h2>What is Deep Q-Network (DQN)?</h2>
+                <p>Deep Q-Network (DQN) is an algorithm that combines Q-learning with deep neural networks to create a powerful reinforcement learning approach capable of handling high-dimensional state spaces. Developed by DeepMind in 2015, DQN achieved human-level performance on many Atari games using only pixel input and game score.</p>
+                
+                <p>The key innovation of DQN is using a neural network to approximate the Q-function instead of a lookup table (as in traditional Q-learning). This allows it to generalize across states and estimate Q-values for states it has never seen before.</p>
+                
+                <h3>Key Components of DQN:</h3>
+                <ol>
+                    <li><strong>Deep Neural Network:</strong> Used to approximate the Q-function (Q(s,a;θ)), where θ represents the network parameters</li>
+                    <li><strong>Experience Replay:</strong> Stores experiences (s, a, r, s') in a buffer and randomly samples from it during training to break correlations between consecutive samples</li>
+                    <li><strong>Target Network:</strong> A separate network with parameters θ⁻ that are periodically updated with the primary network's parameters to provide stable learning targets</li>
+                </ol>
+                
+                <p>The DQN loss function aims to minimize the difference between the predicted Q-values and the target Q-values:</p>
+                <div style="background-color: #f5f5f5; padding: 10px; border-radius: 5px; margin: 10px 0;">
+                    <p style="font-family: monospace; font-size: 16px; text-align: center;">
+                        L(θ) = E[(r + γ * max<sub>a'</sub> Q(s', a'; θ⁻) - Q(s, a; θ))²]
+                    </p>
+                </div>
+                
+                <h3>DQN Training Process:</h3>
+                <ol>
+                    <li>Initialize replay memory D to capacity N</li>
+                    <li>Initialize action-value function Q with random weights θ</li>
+                    <li>Initialize target action-value function Q̂ with weights θ⁻ = θ</li>
+                    <li>For each episode:
+                        <ul>
+                            <li>Initialize state s₁</li>
+                            <li>For each time step t:
+                                <ul>
+                                    <li>Select action aₜ using an ε-greedy policy based on Q</li>
+                                    <li>Execute action aₜ, observe reward rₜ and next state sₜ₊₁</li>
+                                    <li>Store transition (sₜ, aₜ, rₜ, sₜ₊₁) in D</li>
+                                    <li>Sample random mini-batch of transitions from D</li>
+                                    <li>Set target y = rₜ for terminal sₜ₊₁ or rₜ + γ * max<sub>a'</sub> Q̂(sₜ₊₁, a'; θ⁻) for non-terminal sₜ₊₁</li>
+                                    <li>Perform gradient descent step on (y - Q(sₜ, aₜ; θ))² with respect to θ</li>
+                                    <li>Every C steps, update θ⁻ = θ</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ol>
+                
+                <h3>Extensions and Improvements:</h3>
+                <ul>
+                    <li><strong>Double DQN:</strong> Addresses overestimation bias in Q-learning by decoupling action selection and evaluation</li>
+                    <li><strong>Dueling DQN:</strong> Uses a network architecture that separates the estimation of state value and action advantage</li>
+                    <li><strong>Prioritized Experience Replay:</strong> Samples important transitions more frequently based on TD error</li>
+                    <li><strong>Rainbow:</strong> Combines multiple improvements to DQN for state-of-the-art performance</li>
+                </ul>
+                
+                <h3>Applications:</h3>
+                <ul>
+                    <li>Game playing (Atari, Go, Chess, StarCraft)</li>
+                    <li>Robotic control and navigation</li>
+                    <li>Resource allocation</li>
+                    <li>Recommendation systems</li>
+                    <li>Autonomous driving</li>
+                </ul>
+            </div>
+            
+            <div class="topic-video">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/A4IozpMbq-U" title="Deep Q-Network Explained" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                
+                <div class="diagram-container">
+                    <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+                        <!-- DQN Visualization -->
+                        
+                        <!-- Environment -->
+                        <rect x="50" y="150" width="100" height="100" fill="#f5f5f5" stroke="#333" stroke-width="2"/>
+                        <text x="100" y="205" text-anchor="middle" fill="#333" font-size="14">Environment</text>
+                        
+                        <!-- Agent Box -->
+                        <rect x="300" y="100" width="200" height="200" fill="#f5f5f5" stroke="#333" stroke-width="2" rx="10"/>
+                        <text x="400" y="125" text-anchor="middle" fill="#333" font-size="16" font-weight="bold">DQN Agent</text>
+                        
+                        <!-- Neural Network -->
+                        <rect x="350" y="140" width="100" height="80" fill="#6a11cb" opacity="0.7" rx="5"/>
+                        <text x="400" y="160" text-anchor="middle" fill="white" font-size="12">Deep Neural</text>
+                        <text x="400" y="180" text-anchor="middle" fill="white" font-size="12">Network</text>
+                        <text x="400" y="200" text-anchor="middle" fill="white" font-size="12">Q(s, a; θ)</text>
+                        
+                        <!-- Experience Replay -->
+                        <rect x="320" y="240" width="70" height="40" fill="#ff9a8b" opacity="0.7" rx="5"/>
+                        <text x="355" y="265" text-anchor="middle" fill="white" font-size="10">Experience</text>
+                        <text x="355" y="275" text-anchor="middle" fill="white" font-size="10">Replay</text>
+                        
+                        <!-- Target Network -->
+                        <rect x="410" y="240" width="70" height="40" fill="#2575fc" opacity="0.7" rx="5"/>
+                        <text x="445" y="265" text-anchor="middle" fill="white" font-size="10">Target</text>
+                        <text x="445" y="275" text-anchor="middle" fill="white" font-size="10">Network</text>
+                        
+                        <!-- Action Flow -->
+                        <line x1="350" y1="180" x2="170" y2="180" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+                        <text x="250" y="170" text-anchor="middle" fill="#333" font-size="12">Action (a)</text>
+                        
+                        <!-- State Flow -->
+                        <line x1="170" y1="220" x2="350" y2="220" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+                        <text x="250" y="240" text-anchor="middle" fill="#333" font-size="12">State (s), Reward (r)</text>
+                        
+                        <!-- Target Update -->
+                        <line x1="400" y1="220" x2="445" y2="240" stroke="#333" stroke-width="1.5" stroke-dasharray="4" marker-end="url(#arrowhead)"/>
+                        <text x="410" y="230" text-anchor="start" fill="#333" font-size="10">Update Every</text>
+                        <text x="410" y="240" text-anchor="start" fill="#333" font-size="10">C Steps</text>
+                        
+                        <!-- Experience Storage -->
+                        <line x1="330" y1="220" x2="330" y2="240" stroke="#333" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+                        <text x="310" y="230" text-anchor="end" fill="#333" font-size="10">Store</text>
+                        
+                        <!-- Experience Sampling -->
+                        <path d="M 355 240 C 330 220 380 200 400 180" stroke="#333" stroke-width="1.5" fill="none" stroke-dasharray="4" marker-end="url(#arrowhead)"/>
+                        <text x="340" y="210" text-anchor="middle" fill="#333" font-size="10">Sample</text>
+                        
+                        <!-- Target Q-Value -->
+                        <path d="M 445 240 C 480 220 470 200 450 180" stroke="#333" stroke-width="1.5" fill="none" stroke-dasharray="4" marker-end="url(#arrowhead)"/>
+                        <text x="475" y="210" text-anchor="middle" fill="#333" font-size="10">Target</text>
+                        <text x="475" y="220" text-anchor="middle" fill="#333" font-size="10">Q-Value</text>
+                        
+                        <!-- Loss Function -->
+                        <rect x="430" y="50" width="120" height="40" rx="5" fill="white" stroke="#333" stroke-width="1"/>
+                        <text x="490" y="75" text-anchor="middle" fill="#333" font-size="12">Loss Function</text>
+                        <line x1="400" y1="140" x2="470" y2="90" stroke="#333" stroke-width="1.5" stroke-dasharray="4"/>
+                        
+                        <!-- Deep Q-Learning Algorithm Box -->
+                        <rect x="50" y="300" width="500" height="80" rx="5" fill="#f5f5f5" stroke="#333" stroke-width="1"/>
+                        <text x="300" y="320" text-anchor="middle" fill="#333" font-size="14" font-weight="bold">Deep Q-Learning Algorithm</text>
+                        <text x="300" y="340" text-anchor="middle" fill="#333" font-size="12">1. Collect experience (s, a, r, s') using ε-greedy policy</text>
+                        <text x="300" y="360" text-anchor="middle" fill="#333" font-size="12">2. Sample random mini-batch from experience replay</text>
+                        <text x="300" y="380" text-anchor="middle" fill="#333" font-size="12">3. Update Q-network using target network for stability</text>
+                        
+                        <!-- Arrow Marker Definition -->
+                        <defs>
+                            <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+                            </marker>
+                        </defs>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+             <h4>&copy; 2025 Machine Learning Hub | Created by Prof. Rupali Mahajan</h4>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>

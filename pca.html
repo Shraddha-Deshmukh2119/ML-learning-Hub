@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Principal Component Analysis | Machine Learning Hub</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="topic-header">
+        <div class="container">
+            <a href="index.html" class="back-button"><i class="fas fa-arrow-left"></i> Back to Home</a>
+            <h1>Principal Component Analysis (PCA)</h1>
+            <p>Dimensionality reduction technique for finding patterns in data</p>
+        </div>
+    </header>
+
+    <section class="container">
+        <div class="topic-container">
+            <div class="topic-description">
+                <h2>What is Principal Component Analysis?</h2>
+                <p>Principal Component Analysis (PCA) is a statistical procedure that uses an orthogonal transformation to convert a set of observations of possibly correlated variables into a set of values of linearly uncorrelated variables called principal components.</p>
+                
+                <p>In simpler terms, PCA:</p>
+                <ul>
+                    <li>Identifies patterns in data based on the correlation between features</li>
+                    <li>Reduces the dimensionality of the data while preserving as much variability as possible</li>
+                    <li>Transforms data to a new coordinate system where the new axes (principal components) represent directions of maximum variance</li>
+                </ul>
+                
+                <p>The first principal component accounts for as much of the variability in the data as possible, and each succeeding component accounts for as much of the remaining variability as possible while being orthogonal to the preceding components.</p>
+                
+                <h3>Steps in PCA:</h3>
+                <ol>
+                    <li>Standardize the data (mean=0, variance=1)</li>
+                    <li>Calculate the covariance matrix</li>
+                    <li>Calculate eigenvectors and eigenvalues of the covariance matrix</li>
+                    <li>Sort eigenvectors by decreasing eigenvalues</li>
+                    <li>Choose k eigenvectors with the largest eigenvalues</li>
+                    <li>Transform the original data to obtain k principal components</li>
+                </ol>
+                
+                <h3>Applications:</h3>
+                <ul>
+                    <li>Dimensionality reduction for visualization</li>
+                    <li>Noise filtering</li>
+                    <li>Feature extraction</li>
+                    <li>Data compression</li>
+                    <li>Preprocessing for machine learning algorithms</li>
+                </ul>
+            </div>
+            
+            <div class="topic-video">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/FgakZw6K1QQ" title="Principal Component Analysis Explained" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                
+                <div class="diagram-container">
+                    <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+                        <!-- PCA Visualization -->
+                        
+                        <!-- Coordinate System -->
+                        <line x1="50" y1="350" x2="550" y2="350" stroke="#333" stroke-width="2"/>
+                        <line x1="50" y1="50" x2="50" y2="350" stroke="#333" stroke-width="2"/>
+                        
+                        <!-- Original Axes Labels -->
+                        <text x="300" y="380" text-anchor="middle" fill="#333" font-size="14">X₁</text>
+                        <text x="20" y="200" text-anchor="middle" fill="#333" font-size="14" transform="rotate(-90, 20, 200)">X₂</text>
+                        
+                        <!-- Data Points -->
+                        <circle cx="150" cy="250" r="5" fill="#6a11cb"/>
+                        <circle cx="180" cy="220" r="5" fill="#6a11cb"/>
+                        <circle cx="210" cy="190" r="5" fill="#6a11cb"/>
+                        <circle cx="240" cy="170" r="5" fill="#6a11cb"/>
+                        <circle cx="270" cy="160" r="5" fill="#6a11cb"/>
+                        <circle cx="300" cy="150" r="5" fill="#6a11cb"/>
+                        <circle cx="330" cy="140" r="5" fill="#6a11cb"/>
+                        <circle cx="360" cy="120" r="5" fill="#6a11cb"/>
+                        <circle cx="390" cy="100" r="5" fill="#6a11cb"/>
+                        <circle cx="420" cy="90" r="5" fill="#6a11cb"/>
+                        
+                        <circle cx="170" cy="280" r="5" fill="#6a11cb"/>
+                        <circle cx="200" cy="250" r="5" fill="#6a11cb"/>
+                        <circle cx="230" cy="220" r="5" fill="#6a11cb"/>
+                        <circle cx="260" cy="200" r="5" fill="#6a11cb"/>
+                        <circle cx="290" cy="190" r="5" fill="#6a11cb"/>
+                        <circle cx="320" cy="180" r="5" fill="#6a11cb"/>
+                        <circle cx="350" cy="170" r="5" fill="#6a11cb"/>
+                        <circle cx="380" cy="150" r="5" fill="#6a11cb"/>
+                        <circle cx="410" cy="130" r="5" fill="#6a11cb"/>
+                        <circle cx="440" cy="120" r="5" fill="#6a11cb"/>
+                        
+                        <!-- Principal Components -->
+                        <line x1="150" y1="280" x2="450" y2="80" stroke="#ff9a8b" stroke-width="3" stroke-dasharray="5"/>
+                        <line x1="200" y1="280" x2="400" y2="80" stroke="#2575fc" stroke-width="3" stroke-dasharray="5"/>
+                        
+                        <!-- PC Labels -->
+                        <text x="450" y="60" fill="#ff9a8b" font-size="14" font-weight="bold">PC₁</text>
+                        <text x="420" y="90" fill="#2575fc" font-size="14" font-weight="bold">PC₂</text>
+                        
+                        <!-- Projections to PC1 -->
+                        <line x1="150" y1="250" x2="187" y2="227" stroke="#ff9a8b" stroke-width="1" opacity="0.5"/>
+                        <line x1="180" y1="220" x2="210" y2="202" stroke="#ff9a8b" stroke-width="1" opacity="0.5"/>
+                        <line x1="210" y1="190" x2="233" y2="177" stroke="#ff9a8b" stroke-width="1" opacity="0.5"/>
+                        
+                        <!-- Variance Ellipse -->
+                        <ellipse cx="300" cy="190" rx="150" ry="60" fill="none" stroke="#333" stroke-width="1" stroke-dasharray="3" transform="rotate(-30, 300, 190)"/>
+                        
+                        <!-- Legend -->
+                        <circle cx="100" cy="50" r="5" fill="#6a11cb"/>
+                        <text x="120" y="55" fill="#333" font-size="12">Data Points</text>
+                        
+                        <line x1="200" y1="50" x2="240" y2="50" stroke="#ff9a8b" stroke-width="3" stroke-dasharray="5"/>
+                        <text x="260" y="55" fill="#333" font-size="12">First Principal Component</text>
+                        
+                        <line x1="400" y1="50" x2="440" y2="50" stroke="#2575fc" stroke-width="3" stroke-dasharray="5"/>
+                        <text x="460" y="55" fill="#333" font-size="12">Second Principal Component</text>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+             <h4>&copy; 2025 Machine Learning Hub | Created by Prof. Rupali Mahajan</h4>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>

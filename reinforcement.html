@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reinforcement Learning | Machine Learning Hub</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="topic-header">
+        <div class="container">
+            <a href="index.html" class="back-button"><i class="fas fa-arrow-left"></i> Back to Home</a>
+            <h1>Reinforcement Learning</h1>
+            <p>Learning through interaction with an environment</p>
+        </div>
+    </header>
+
+    <section class="container">
+        <div class="topic-container">
+            <div class="topic-description">
+                <h2>What is Reinforcement Learning?</h2>
+                <p>Reinforcement learning is an area of machine learning concerned with how intelligent agents ought to take actions in an environment in order to maximize the notion of cumulative reward. Unlike supervised learning, reinforcement learning algorithms are not presented with example data with labels.</p>
+                
+                <p>In reinforcement learning:</p>
+                <ul>
+                    <li>An agent learns by interacting with its environment</li>
+                    <li>The agent receives rewards or penalties for the actions it performs</li>
+                    <li>The goal is to maximize the total reward over time</li>
+                    <li>There is no supervisor, only a reward signal</li>
+                </ul>
+                
+                <p>Reinforcement learning is particularly well-suited for problems that include a long-term versus short-term reward trade-off. It has been applied successfully to various problems, including game playing, robotics, resource management, and healthcare.</p>
+                
+                <h3>Common Reinforcement Learning Algorithms:</h3>
+                <ul>
+                    <li><a href="q-learning.html">Q-Learning</a></li>
+                    <li><a href="deep_q_network.html">Q Network (DQN)</a></li>
+                    <li><a href="policy_gradient_methods.html">Gradient Methods</a></li>
+                    
+                </ul>
+            </div>
+            
+            <div class="topic-video">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/2pWv7GOvuf0" title="Reinforcement Learning Explained" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                
+                <div class="diagram-container">
+                    <svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Reinforcement Learning Flow Diagram -->
+                        <!-- Agent Section -->
+                        <rect x="300" y="50" width="200" height="100" rx="10" fill="#6a11cb" opacity="0.8"/>
+                        <text x="400" y="100" text-anchor="middle" fill="white" font-size="18">Agent</text>
+                        <text x="400" y="130" text-anchor="middle" fill="white" font-size="14">(Policy)</text>
+                        
+                        <!-- Environment Section -->
+                        <rect x="300" y="250" width="200" height="100" rx="10" fill="#2575fc" opacity="0.8"/>
+                        <text x="400" y="300" text-anchor="middle" fill="white" font-size="18">Environment</text>
+                        
+                        <!-- State Section -->
+                        <rect x="50" y="150" width="150" height="80" rx="10" fill="#49a09d" opacity="0.8"/>
+                        <text x="125" y="195" text-anchor="middle" fill="white" font-size="18">State</text>
+                        
+                        <!-- Action Section -->
+                        <rect x="600" y="150" width="150" height="80" rx="10" fill="#ff9a8b" opacity="0.8"/>
+                        <text x="675" y="195" text-anchor="middle" fill="white" font-size="18">Action</text>
+                        
+                        <!-- Reward Section -->
+                        <ellipse cx="400" cy="190" rx="70" ry="30" fill="#ffb347" opacity="0.8"/>
+                        <text x="400" y="195" text-anchor="middle" fill="white" font-size="18">Reward</text>
+                        
+                        <!-- Arrows -->
+                        <path d="M 200 190 L 300 100" stroke="#333" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+                        <path d="M 500 100 L 600 190" stroke="#333" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+                        <path d="M 600 190 L 500 250" stroke="#333" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+                        <path d="M 300 250 L 200 190" stroke="#333" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+                        <path d="M 400 250 L 400 220" stroke="#333" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+                        <path d="M 400 160 L 400 150" stroke="#333" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+                        
+                        <!-- Arrow Marker Definition -->
+                        <defs>
+                            <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+                                <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+                            </marker>
+                        </defs>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+             <h4>&copy; 2025 Machine Learning Hub | Created by Prof. Rupali Mahajan</h4>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>
